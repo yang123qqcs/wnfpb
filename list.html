@@ -24,153 +24,78 @@
 			<ul>
 				<li>当前位置：</li>
 				<li>
-					<a href="#">首页</a>
+					<a href="/">首页</a>
 				</li>
-				<li>&gt;</li>
-				<li>新闻中心</li>
+				<th:block th:each="cata :${#CataData.getCatalogPosition(site.id,catalog.id)}">
+					<li th:switch = "${cataStat.last} eq false">
+						<a th:case="true" th:href="${cata.linkUrl}">[[${cata.name}]]</a>
+						<a th:case="false">[[${cata.name}]]</a>
+					</li>
+					<li th:if="${cataStat.last} eq false">&gt;</li>
+				</th:block>
 			</ul>
 		</div>
 		<!-- 列表 -->
 		<div class="g-list">
 			<div class="g-lt left">
+				<th:block th:with="catalogList = ${#CataData.getCatalogChildrenTree(site.id,catalog.parentId !=0 ? catalog.parentId : catalog.id )}">
 				<div class="m-lt-tnm">
-					新闻中心
+					[[${rootCatalog.name}]]
 				</div>
 				<div class="m-lt-list">
 					<ul>
-						<li class="hover">
-							<a href="#">时政新闻</a>
-						</li>
-						<li>
-							<a href="#">中省信息</a>
-						</li>
-						<li>
-							<a href="#">扶贫要闻</a>
-						</li>
-						<li>
-							<a href="#">基层动态</a>
-						</li>
-						<li>
-							<a href="#">通知公告</a>
-						</li>
+						<th:block th:each="cataq : ${catalogList}">
+							<li th:id="${'one_'+cataq.id}" th:onclick="setTab([[one_+${cataq.id}]],[[${cataqStat.count}]],[[${cataq.size}]])" th:class="${cataq.id == catalog.id ? 'hover' : ''}"><a th:href="${cataq.linkUrl}"  th:target="${cataq.flagExternal == 1 ? '_blank':'_self'}" th:text="${cataq.name}">[[${cataq.name}]]</a></li>
+						</th:block>
 					</ul>
 				</div>
+				</th:block>
 			</div>
+
 			<div class="g-rt right">
 				<div class="g-news-list">
 					<div class="blank22"></div>
 					<div class="m-tlt">
 						<div class="u-nm">
-							时政新闻
+							[[${catalog.name}]]
 						</div>
 					</div>
+					<th:block th:with="infoList = ${#InfoData.getInfoList(#{'siteId':site.id,'catId':catalog.id,'orderby','st.resource_publication_date'},pageNo,20)}">
 					<div class="m-list">
 						<ul>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">中央应对新型冠状病毒感染肺炎疫情工作领导小组关于在有效防控疫情的同时积极... </a>
-							</li>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">中央应对新型冠状病毒感染肺炎疫情工作领导小组关于在有效防控疫情的同时积极... </a>
-							</li>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">中央应对新型冠状病毒感染肺炎疫情工作领导小组关于在有效防控疫情的同时积极... </a>
-							</li>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">中央应对新型冠状病毒感染肺炎疫情工作领导小组关于在有效防控疫情的同时积极... </a>
-							</li>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">中央应对新型冠状病毒感染肺炎疫情工作领导小组关于在有效防控疫情的同时积极... </a>
-							</li>
-						</ul>
-						<ul>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">中央应对新型冠状病毒感染肺炎疫情工作领导小组关于在有效防控疫情的同时积极... </a>
-							</li>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">中央应对新型冠状病毒感染肺炎疫情工作领导小组关于在有效防控疫情的同时积极... </a>
-							</li>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">中央应对新型冠状病毒感染肺炎疫情工作领导小组关于在有效防控疫情的同时积极... </a>
-							</li>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">中央应对新型冠状病毒感染肺炎疫情工作领导小组关于在有效防控疫情的同时积极... </a>
-							</li>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">中央应对新型冠状病毒感染肺炎疫情工作领导小组关于在有效防控疫情的同时积极... </a>
-							</li>
-						</ul>
-						<ul>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">中央应对新型冠状病毒感染肺炎疫情工作领导小组关于在有效防控疫情的同时积极... </a>
-							</li>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">中央应对新型冠状病毒感染肺炎疫情工作领导小组关于在有效防控疫情的同时积极... </a>
-							</li>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">中央应对新型冠状病毒感染肺炎疫情工作领导小组关于在有效防控疫情的同时积极... </a>
-							</li>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">中央应对新型冠状病毒感染肺炎疫情工作领导小组关于在有效防控疫情的同时积极... </a>
-							</li>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">中央应对新型冠状病毒感染肺炎疫情工作领导小组关于在有效防控疫情的同时积极... </a>
-							</li>
-						</ul>
-						<ul>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">中央应对新型冠状病毒感染肺炎疫情工作领导小组关于在有效防控疫情的同时积极... </a>
-							</li>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">中央应对新型冠状病毒感染肺炎疫情工作领导小组关于在有效防控疫情的同时积极... </a>
-							</li>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">中央应对新型冠状病毒感染肺炎疫情工作领导小组关于在有效防控疫情的同时积极... </a>
-							</li>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">中央应对新型冠状病毒感染肺炎疫情工作领导小组关于在有效防控疫情的同时积极... </a>
-							</li>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">中央应对新型冠状病毒感染肺炎疫情工作领导小组关于在有效防控疫情的同时积极... </a>
-							</li>
+								<th:block th:each="item : ${infoList.records}">
+									<th:block th:if="${itemStat.count == 6 || ${itemStat.count == 11}">
+						                </ul>
+										<ul>
+									</th:block>
+									<li th:with="infoObj = ${#InfoData.getInfoById(item.id)}">
+										<a th:href="${item.url}" target="_blank" th:title="${item.title}">
+											<div class="shijian"><p class="day">[[${#dates.format(item.resourcePublicationDate,'dd')}]]</p><p class="year">[[${#dates.format(item.resourcePublicationDate,'yyyy/MM')}]]</p></div>
+											<div class="sinfo">
+												<h1 th:title="${item.title}">[[${item.title}]]</h1>
+												<p th:if="${infoObj.resourceSummary!=''}">[[${#strings.abbreviate(infoObj.resourceSummary,93)}]]</p>
+											</div>
+										</a>
+									</li>
+								</th:block>
+
 						</ul>
 					</div>
 					<!--翻页-->
 					<div class="m-lst-pg">
-						<span><a href="?cat_id=10044&amp;cur_page=1">首页</a></span>
-						<span><a href="?cat_id=10044&amp;cur_page=1">上一页</a></span>
-						<span class="hover"><a href="?cat_id=10044&amp;cur_page=1">1</a></span>
-						<span><a href="?cat_id=10044&amp;cur_page=2">2</a></span>            
-						<span><a href="?cat_id=10044&amp;cur_page=3">3</a></span>                            
-						<span><a href="?cat_id=10044&amp;cur_page=2">下一页</a></span>
-						<span><a href="?cat_id=10044&amp;cur_page=5">尾页</a></span>
-						<span>共65条记录</span>
-						<span>共5页</span>
-						<span>跳转到
-						    <select onchange="location.href=this.options[this.selectedIndex].value;">
-						        <option value="?site_id=CMSwzgjj&amp;cat_id=10044&amp;cur_page=1" selected="selected">1</option>                            
-						    </select>页
-						</span>
-					</div> 
+						<span><a th:href="${infoList.firstPageUrl}">首页</a></span>
+						<span><a th:href="${infoList.prePageUrl}">上一页</a></span>
+						<span><a th:href="${infoList.nextPageUrl}">下一页</a></span>
+						<span><a th:href="${infoList.endPageUrl}">末页</a></span>
+						<span th:text="'共'+${infoList.total}+'条记录'">共${infoList.total}条记录</span>
+						<span th:text="'共'+${infoList.pages}+'页'">共${infoList.pages}页</span>
+						<span>跳转到</span>
+						<select onchange="location.href=this.options[this.selectedIndex].value;">
+							<option th:each="p,status : ${infoList.pageList}" th:value="${p}" th:selected="${status.index+1} == ${infoList.current}" th:text="${status.index+1}">[[${status.index+1}]]</option>
+						</select>
+						<span>页</span>
+					</div>
+					</th:block>
 					<!--翻页end-->
 				</div>
 			</div>
