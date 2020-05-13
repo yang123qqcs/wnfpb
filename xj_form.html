@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>渭南市扶贫开发办公室</title>
+	<link rel="stylesheet" href="styles/common.skin/group.css">
+	<link rel="stylesheet" href="styles/common.skin/common.css">
+	<link rel="stylesheet" href="styles/common.skin/swiper.min.css">
+	<link rel="stylesheet" href="styles/index.skin/index.css">
+	<script src="js/jquery.js"></script>
+	<script src="js/swiper.min.js"></script>
+	<script src="js/common.js"></script>
+</head>
+<body>
+	<!-- 头部 -->
+	<div class="g-head">
+		<div class="g-bd">
+			<div class="blank15"></div>
+			<!-- 顶部链接 -->
+			<div class="g-top">
+				<div class="g-top-lt left">
+					<a href="#">中央政府门户网站</a>
+					<span>|</span>
+					<a href="#">省政府</a>
+					<span>|</span>
+					<a href="#">市政府</a>
+				</div>
+				<div class="g-top-rt right">
+					<a href="#">政府微信矩阵</a>
+					<span>|</span>
+					<a href="#">政府微博矩阵</a>
+				</div>
+			</div>
+			<div class="blank35"></div>
+			<!-- logo及搜索框 -->
+			<div class="g-logo">
+				<div class="m-logo">
+					<img src="images/common.files/logo.png">
+				</div>
+				<div class="m-search">
+				    <form target="_blank" action="http://www.zfgjj.gswuwei.gov.cn/search/searchResultGJ.jsp" name="searchform" method="get" id="searchform">
+				        <input type="text" name="q" id="q" class="sc_text" value="本站搜索" onfocus="if (this.value == '本站搜索') {this.value = '';}" onblur="if (this.value == '') {this.value = '本站搜索';}">
+				        <input type="button" class="sc_btn right" onclick="checkSc();">
+				    </form>
+				    <script type="text/javascript">
+				        function checkSc(){
+				        	var search_text = jQuery(".sc_text").val();
+				        	if(search_text=="" || search_text == "本站搜索"){
+				        		alert("请输入关键字搜索！");
+				        		return false;
+				        	}else{
+				        		searchform.submit();
+				        	}
+					    }
+					    $(".sc_text").bind('keydown', function (event) {
+					        if (event.keyCode == "13") {                           
+					          var search_text = $(".sc_text").val();
+					          if (search_text == "" || search_text == "本站搜索") {
+					            alert("请输入关键字搜索！");
+					            return false;
+					          } else {
+					            searchform.submit();
+					          }
+					        }
+				        })
+				    </script>
+				</div>
+			</div>
+			<div class="blank42"></div>
+			<!-- 导航栏 -->
+			<div class="g-nav">
+				<ul>
+					<li>
+						<a href="#">首页</a>
+					</li>
+					<li>
+						<a href="#">本办概况</a>
+					</li>
+					<li>
+						<a href="#">新闻中心</a>
+					</li>
+					<li>
+						<a href="#">政务公开</a>
+					</li>
+					<li>
+						<a href="#">政策法规</a>
+					</li>
+					<li>
+						<a href="#">调查研究</a>
+					</li>
+					<li>
+						<a href="#">扶贫视频</a>
+					</li>
+					<li>
+						<a href="#">互动交流</a>
+					</li>
+				</ul>
+			</div>
+			<div class="blank15"></div>
+		</div>
+		<div class="g-fgx"></div>
+	</div>
+	<!-- 通用列表 -->
+	<div class="g-bd g-list-bd">
+		<!-- 列表页当前位置 -->
+		<div class="m-local">
+			<ul>
+				<li>当前位置：</li>
+				<li>
+					<a href="#">首页</a>
+				</li>
+				<li>&gt;</li>
+				<li>
+					<a href="#">互动交流</a>
+				</li>
+				<li>&gt;</li>
+				<li>领导信箱</li>
+			</ul>
+		</div>
+		<!-- 列表 -->
+		<div class="g-list">
+			<div class="g-lt left">
+				<div class="m-lt-tnm">
+					互动交流
+				</div>
+				<div class="m-lt-list">
+					<ul>
+						<li class="hover">
+							<a href="#">领导信箱</a>
+						</li>
+						<li>
+							<a href="#">征集调查</a>
+						</li>
+						<li>
+							<a href="#">常见问题</a>
+						</li>
+						<li>
+							<a href="#">留言反馈</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="g-rt right">
+				<div class="g-news-list">
+					<div class="blank22"></div>
+
+					<div class="m-xjform">
+	                    <div class="m-xjrt">
+	                        <div class="xjpd">
+	                            <div class="xjtt">请填写信息</div>
+	                            <div class="g-blank12"></div>
+	                            <div class="xjform">
+	                                <form id="appealForm" class="">
+	                                    <input type="hidden" name="modelId" id="modelId" th:value="${modelData.id}"><!--业务ID-->
+	                                    <input type="hidden" name="namePath" id="namePath" th:value="${catalog.pathName}"><!--栏目-->
+	                                    <input type="hidden" name="actionType" id="actionType" value="insertAppeal"><!--表单类型-->
+	                                    <input type="hidden" name="random" id="random" value=""><!--验证码KEY-->
+	                                    <div class="sendForm">
+	                                        <div class="blank15"></div>
+	                                        <table class="regFormTable" cellspacing="0" cellpadding="0" border="0">
+	                                            <tbody>
+	                                            <tr>
+	                                                <th>信件标题：</th>
+	                                                <td><input id="title" name="title" type="text" class="width400 input_text" placeholder="请输入信件标题(100字以内)" value="">
+	                                                    <span class="f_red">*</span><div class="cError"></div>
+	                                                </td>
+	                                            </tr>
+	                                            <tr><td><div class="blank6"></div></td></tr>
+	                                            <tr>
+	                                                <th>受理部门：</th>
+	                                                <td>
+	                                                    <select name="deptId" id="deptId" style="width:165px;" class="input_select valid" th:with="deptList = ${#AppealData.getPartDept(modelData.id)}">
+	                                                        <option selected="" value="">请选择受理部门</option>
+	                                                        <option value="-1" style="color:red;">我不知道部门</option>
+	                                                        <option th:each="item : ${deptList}" th:value="${item.id}" th:text="${item.name}">[[${item.name}]]</option>         
+	                                                    </select>
+	                                                    <span class="f_red">*</span><div class="cError"></div>
+	                                                </td>
+	                                            </tr>
+	                                            <tr><td><div class="blank6"></div></td></tr>
+	                                            <tr>
+	                                                <th>写信目的：</th>
+	                                                <td>
+	                                                    <th:block th:with="purposeList = ${#AppealData.getPurposeList()}">
+	                                                        <span th:each="item,itemStat : ${purposeList}">
+	                                                            <input type="radio" th:value="${item.id}" th:if="${itemStat.index==0}" checked="true" name="purId" id="purId" class="radioClass input_radio">
+	                                                            <input type="radio" th:value="${item.id}" th:if="${itemStat.index > 0}" name="purId" id="purId" class="radioClass input_radio">
+	                                                            <label for="pur_1" th:text="${item.purposeName}">[[${item.purposeName}]]</label>
+	                                                           </span>
+	                                                    </th:block>
+	                                                </td>
+	                                            </tr>
+	                                            <tr><td><div class="blank6"></div></td></tr>
+	                                            <tr>
+	                                                <th>公开意愿：</th>
+	                                                <td>
+	                                                    <input type="radio" value="1" name="isOpen" id="isOpen" class="radioClass input_radio" checked="true">
+	                                                    <label for="pur_1">公开</label>
+	                                                    <input type="radio" value="2" name="isOpen" id="isOpen" class="radioClass input_radio">
+	                                                    <label for="pur_1">不公开</label>
+	                                                    <label style="margin-left: 20px;color: #f00;">注:选择公开的将有可能当作案例在网站公开。</label>
+	                                                </td>
+	                                            </tr>                                    
+	                                            <tr><td><div class="blank6"></div></td></tr>
+	                                            <tr>
+	                                                <th>信件内容：</th>
+	                                                <td>
+	                                                    <textarea id="content" name="content" style="width:460px;height:250px" placeholder="请输入信件内容" class="input_textarea"></textarea>
+	                                                    <div class="cError"></div>
+	                                                </td>
+	                                            </tr>
+	                                            <tr><td><div class="blank6"></div></td></tr>
+	                                        </tbody></table>
+	                                        <table class="regFormTable" cellspacing="0" cellpadding="0" border="0">
+	                                            <tbody><tr>
+	                                                <th>姓<span class="spanSpace12"></span><span class="spanSpace12"></span>名：</th>
+	                                                <td><input id="userName" name="userName" type="text" class="width400 input_text" value="" placeholder="请输入您的姓名">
+	                                                    <span class="f_red">*</span><div class="cError"></div>
+	                                                </td>
+	                                            </tr>
+	                                            <tr><td><div class="blank6"></div></td></tr>
+	                                            <tr>
+	                                                <th>身份证号：</th>
+	                                                <td><input id="cardId" name="cardId" type="text" class="width400 input_text" value="" placeholder="请输入您的电子邮箱">
+	                                                    <span class="f_red">*</span><div class="cError"></div></td>
+	                                            </tr>
+	                                            <tr><td><div class="blank6"></div></td></tr>
+	                                            <tr>
+	                                                <th>联系地址：</th>
+	                                                <td><input id="address" name="address" type="text" class="width400 input_text" value="" placeholder="请输入您联系地址">
+	                                                    <span class="f_red">*</span><div class="cError"></div></td>
+	                                            </tr>
+	                                            <tr><td><div class="blank6"></div></td></tr>
+	                                            <tr>
+	                                                <th>联系手机：</th>
+	                                                <td><input id="phone" name="phone" type="text" class="width400 input_text" value="" placeholder="请输入您的手机号码">
+	                                                    <span class="f_red">*</span><div class="cError"></div></td>
+	                                            </tr>
+	                                            <tr><td><div class="blank6"></div></td></tr>
+	                                            <tr>
+	                                                <th>电子邮件：</th>
+	                                                <td><input id="email" name="email" type="text" class="width400 input_text" value="" placeholder="请输入您的电子邮箱">
+	                                                    <span class="f_red">*</span><div class="cError"></div></td>
+	                                            </tr>
+	                                            <tr><td><div class="blank6"></div></td></tr>
+	                                            <tr>
+	                                                <th>附件上传：</th>
+	                                                <td>
+	                                                    <p>最多可上传[[${modelData.fileCount}]]个文件</p>
+	                                                    <ul id="fileList">
+	                                                        
+	                                                    </ul>
+	                                                    <p>
+	                                                        <input type="button" id="filePathButton" value="上传">
+	                                                    </p>
+	                                                    <input type="hidden" name="filePath" id="filePath">
+	                                                </td>
+	                                            </tr>
+	                                            <tr><td><div class="blank6"></div></td></tr>      
+	                                            <tr>
+	                                                <th>验<span class="spanSpace6"></span>证<span class="spanSpace6"></span>码：</th>
+	                                                <td>
+	                                                    <input id="verifyCode" name="verifyCode" type="text" class="" value="" maxlength="4" style="width:78px;">
+	                                                    <img alt="" src="/servlet/CreateImage" width="80" height="22" id="img" style="width: auto;" align="absmiddle">&nbsp;&nbsp;
+	                                                    <span class="f_red">=?(请输入计算结果)</span>
+	                                                    <a href="javascript:changeCreateImage();" style="color: #337ab7;">看不清，请换一张</a>
+	                                                    <div class="cError"></div>
+	                                                </td>
+	                                            </tr>
+	                                            <tr>
+	                                                <td colspan="2" algin="center">
+	                                                    <div class="blankHeight20"></div>
+	                                                    <div style="width:auto;text-align:center;border:0px;">
+	                                                        <input id="btnOK" name="btnOK" type="button" onclick="insertAppeal()" class="wcbtn tjbtn" value="提交"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	                                                        <input id="btnRst" name="btnReSet" type="reset" value="重置" class="wcbtn resetbtn">
+	                                                    </div>
+	                                                    <div class="blankHeight20"></div>
+	                                                </td>
+	                                            </tr>
+	                                        </tbody>
+	                                        </table>
+	                                    </div>
+	                                </form>
+	                                <div id="result_div" class="result_div hidden">
+	                                    <table class="regFromSuccessTable" border="0" cellpadding="0" cellspacing="0">
+	                                        <tbody><tr>
+	                                            <th><b>提交成功：</b></th>
+	                                            <td>谢谢您的参与！</td>
+	                                        </tr>
+	                                        <tr>
+	                                            <th><b>信件编码：</b></th>
+	                                            <td id="result_sq_code"></td>
+	                                        </tr>
+	                                        <tr>
+	                                            <th><b>查询密码：</b></th>
+	                                            <td id="result_query_code"></td>
+	                                        </tr>
+	                                        <tr>
+	                                            <th><b>友情提示：</b></th>
+	                                            <td>请妥善保存您的信件编码及查询码</td>
+	                                        </tr>
+	                                    </tbody></table>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+					<div class="blank22"></div>
+					
+
+
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 版权 -->
+	<div class="g-ft-list">
+		<div class="g-bd">
+			<div class="m-ft">
+				<div class="blank20"></div>
+	            <!-- 党政机关 -->
+	            <div class="dzjg">
+	            	<a href="#">
+	            		<img src="images/common.files/red.png">
+	            	</a>
+	            </div>
+	            <!-- 版权文字 -->
+	            <div class="bqwz">
+	            	<p style="text-indent: 141px;">
+	            		<a href="#">关于我们</a>
+	            		<span>|</span>
+	            		<a href="#">联系我们</a>
+	            		<span>|</span>
+	            		<a href="#">网站声明</a>
+	            		<span>|</span>
+	            		<a href="#">网站地图</a>
+	            	</p>
+	            	<p style="text-indent: 187px;">渭南市扶贫开发办公室主办</p>
+	            	<p>网站标识码：6101000007&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">陕ICP备05011550号</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><img src="images/common.files/ghs.png" style="position: relative;top:4px;padding-right: 5px;">陕公网安备 61011202000087号</a></p>
+	            </div>
+	            <!-- 微信号 -->
+	            <div class="wxgzh">
+	            	<img src="images/common.files/wnfpewm.png">
+	            	<p>渭南扶贫办微信号</p>
+	            </div>
+			</div>
+		</div>
+	</div>
+
+	
+
+
+
+
+
+
+
+
+	
+</body>
+</html>

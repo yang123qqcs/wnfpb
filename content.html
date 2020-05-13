@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>渭南市扶贫开发办公室</title>
+	<link rel="stylesheet" href="styles/common.skin/group.css">
+	<link rel="stylesheet" href="styles/common.skin/common.css">
+	<link rel="stylesheet" href="styles/common.skin/swiper.min.css">
+	<link rel="stylesheet" href="styles/index.skin/index.css">
+	<script src="js/jquery.js"></script>
+	<script src="js/swiper.min.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/article_pub.js"></script>
+</head>
+<body>
+	<!-- 头部 -->
+	<div class="g-head">
+		<div class="g-bd">
+			<div class="blank15"></div>
+			<!-- 顶部链接 -->
+			<div class="g-top">
+				<div class="g-top-lt left">
+					<a href="#">中央政府门户网站</a>
+					<span>|</span>
+					<a href="#">省政府</a>
+					<span>|</span>
+					<a href="#">市政府</a>
+				</div>
+				<div class="g-top-rt right">
+					<a href="#">政府微信矩阵</a>
+					<span>|</span>
+					<a href="#">政府微博矩阵</a>
+				</div>
+			</div>
+			<div class="blank35"></div>
+			<!-- logo及搜索框 -->
+			<div class="g-logo">
+				<div class="m-logo">
+					<img src="images/common.files/logo.png">
+				</div>
+				<div class="m-search">
+				    <form target="_blank" action="http://www.zfgjj.gswuwei.gov.cn/search/searchResultGJ.jsp" name="searchform" method="get" id="searchform">
+				        <input type="text" name="q" id="q" class="sc_text" value="本站搜索" onfocus="if (this.value == '本站搜索') {this.value = '';}" onblur="if (this.value == '') {this.value = '本站搜索';}">
+				        <input type="button" class="sc_btn right" onclick="checkSc();">
+				    </form>
+				    <script type="text/javascript">
+				        function checkSc(){
+				        	var search_text = jQuery(".sc_text").val();
+				        	if(search_text=="" || search_text == "本站搜索"){
+				        		alert("请输入关键字搜索！");
+				        		return false;
+				        	}else{
+				        		searchform.submit();
+				        	}
+					    }
+					    $(".sc_text").bind('keydown', function (event) {
+					        if (event.keyCode == "13") {                           
+					          var search_text = $(".sc_text").val();
+					          if (search_text == "" || search_text == "本站搜索") {
+					            alert("请输入关键字搜索！");
+					            return false;
+					          } else {
+					            searchform.submit();
+					          }
+					        }
+				        })
+				    </script>
+				</div>
+			</div>
+			<div class="blank42"></div>
+			<!-- 导航栏 -->
+			<div class="g-nav">
+				<ul>
+					<li>
+						<a href="#">首页</a>
+					</li>
+					<li>
+						<a href="#">本办概况</a>
+					</li>
+					<li>
+						<a href="#">新闻中心</a>
+					</li>
+					<li>
+						<a href="#">政务公开</a>
+					</li>
+					<li>
+						<a href="#">政策法规</a>
+					</li>
+					<li>
+						<a href="#">调查研究</a>
+					</li>
+					<li>
+						<a href="#">扶贫视频</a>
+					</li>
+					<li>
+						<a href="#">互动交流</a>
+					</li>
+				</ul>
+			</div>
+			<div class="blank15"></div>
+		</div>
+		<div class="g-fgx"></div>
+	</div>
+	
+	<!--正文-->
+	<div class="g-bd">
+		<div class="g-ct">
+			<!-- 正文页当前位置 -->
+			<div class="m-local">
+				<ul>
+					<li>当前位置：</li>
+					<li>
+						<a href="#">首页</a>
+					</li>
+					<li>&gt;</li>
+					<li>
+						<a href="#">新闻中心</a>
+					</li>
+					<li>&gt;</li>
+					<li>时政新闻</li>
+				</ul>
+			</div>
+			
+			<div class="m-ct-detail" id="printContent">
+				<div class="m-ct-utt"></div>
+		        <div class="blank6"></div>
+		        <div class="m-ct-tt">中央军委主席习近平签署通令 嘉奖军队执行新冠肺炎疫情防控任务全体人员</div>
+		        <div class="blank6"></div>
+		        <div class="m-ct-dtt"></div>
+		        <div class="blank6"></div>
+		        <div class="m-ct-crm">
+		        	<span class="font">发布日期：2019-12-11 09:09</span>
+		        	<span class="font">来源：甘泉县融媒体中心</span>
+		        	<div class="m-ct-print">
+		        		<a href="javascript:window.print();" class="u-print">打印</a>
+		        		<span style="margin: 0 5px;">|</span>
+		        		<span class="switchsize">字号：<span class="bigger">大</span> <span class="medium">中</span> <span class="smaller">小</span></span>
+		        		<span>分享到：</span>
+		        		<div class="shar_area">
+					      <div class="bdsharebuttonbox bdshare-button-style0-24" data-bd-bind="1576569272196">
+					        <a href="#" class="bds_more" data-cmd="more"></a>
+					        <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+					        <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+					        <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+					      </div>
+					      <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+					    </div> 
+		        	</div>
+		        </div>
+		        <div class="m-ct-artcle" style="font-size: 16px;">
+		        	<p style="text-indent:2em;">新华社北京4月17日电 中华人民共和国中央军事委员会主席习近平日前签署通令，嘉奖军队执行新冠肺炎疫情防控任务全体人员。</p>
+		        	<p style="text-indent:2em;">嘉奖令指出，新冠肺炎疫情发生后，全军部队坚决贯彻党中央、中央军委决策号令，闻令而动、勇挑重担，不负重托、不辱使命，为打赢疫情防控人民战争、总体战、阻击战作出突出贡献。任务部队各级党组织和党员、干部勇当抗疫先锋队突击队，战斗在前、冲锋在前，充分发挥战斗堡垒和先锋模范作用，让党旗在防控疫情斗争第一线高高飘扬。广大医务人员义无反顾、坚韧不拔、日夜奋战、敢打硬仗，同时间赛跑、与病魔较量，发挥了抗疫斗争的中流砥柱作用。科研人员迎难而上、争分夺秒，全力以赴展开应急科研攻关，为疫情防控提供坚强有力科技支撑。新闻工作者不畏艰险、深入一线，大力宣传抗疫感人事迹，生动讲述军队抗疫故事，向中国和世界传播了强大正能量。担负组织协调、运输投送、安保警戒、勤务保障等任务人员日夜值守、不辞辛劳，同心协力、全力保障，铸就了疫情防控的坚强后盾。</p>
+		        	<p style="text-indent:2em;">嘉奖令指出，突如其来的新冠肺炎疫情，对全军部队和广大官兵是一场大战和大考，执行疫情防控任务全体人员，以坚定信念、过硬能力、顽强作风、牺牲奉献，交出了一份圆满答卷。全体人员牢记我军宗旨，始终坚持人民利益高于一切，把人民群众生命安全和身体健康放在第一位，展现了人民子弟兵忠于党、忠于人民的政治品格；坚决贯彻坚定信心、同舟共济、科学防治、精准施策的总要求，加强组织领导、密切军地协同、坚持科学施治、搞好自身防护，锤炼了我军能打仗、打胜仗的过硬本领；始终视疫情为命令，召之即来、来之能战、战之能胜，危难时刻挺身而出，彰显了我军越是艰险越向前的大无畏革命精神，为党旗、军旗增添了光彩。</p>
+		        	<p style="text-indent:2em;">嘉奖令号召，全军部队和广大官兵要向执行新冠肺炎疫情防控任务的全体人员学习，不忘初心、牢记使命，奋力推进强军事业。各级要坚持以习近平新时代中国特色社会主义思想为指导，深入贯彻习近平强军思想，深入贯彻新时代军事战略方针，增强“四个意识”、坚定“四个自信”、做到“两个维护”，贯彻军委主席负责制，坚持政治建军、改革强军、科技强军、人才强军、依法治军，聚力练兵备战，锐意开拓进取，为实现党在新时代的强军目标、把人民军队全面建成世界一流军队不懈奋斗！</p>
+		        </div>
+		
+			</div>
+			
+			
+			
+		</div>
+	</div>
+
+
+
+
+
+	<!-- 版权 -->
+	<div class="g-ft-list">
+		<div class="g-bd">
+			<div class="m-ft">
+				<div class="blank20"></div>
+	            <!-- 党政机关 -->
+	            <div class="dzjg">
+	            	<a href="#">
+	            		<img src="images/common.files/red.png">
+	            	</a>
+	            </div>
+	            <!-- 版权文字 -->
+	            <div class="bqwz">
+	            	<p style="text-indent: 141px;">
+	            		<a href="#">关于我们</a>
+	            		<span>|</span>
+	            		<a href="#">联系我们</a>
+	            		<span>|</span>
+	            		<a href="#">网站声明</a>
+	            		<span>|</span>
+	            		<a href="#">网站地图</a>
+	            	</p>
+	            	<p style="text-indent: 187px;">渭南市扶贫开发办公室主办</p>
+	            	<p>网站标识码：6101000007&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">陕ICP备05011550号</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><img src="images/common.files/ghs.png" style="position: relative;top:4px;padding-right: 5px;">陕公网安备 61011202000087号</a></p>
+	            </div>
+	            <!-- 微信号 -->
+	            <div class="wxgzh">
+	            	<img src="images/common.files/wnfpewm.png">
+	            	<p>渭南扶贫办微信号</p>
+	            </div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
