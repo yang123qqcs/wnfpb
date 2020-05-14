@@ -13,8 +13,8 @@ function insertAppeal(){
 		success:function(data){
 			if(data.status==200){
 				$('#appealForm').remove();
-				$('#result_div #result_sq_code').append(data.data.data.sqCode);
-				$('#result_div #result_query_code').append(data.data.data.queryCode);
+				$('#result_div #result_sq_code').append(data.data.sqCode);
+				$('#result_div #result_query_code').append(data.data.queryCode);
 				$('#result_div').show();
 			}else{
 				alert(data.message);
