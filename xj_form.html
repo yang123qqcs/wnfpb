@@ -24,38 +24,35 @@
 			<ul>
 				<li>当前位置：</li>
 				<li>
-					<a href="#">首页</a>
+					<a href="/">首页</a>
 				</li>
-				<li>&gt;</li>
 				<li>
-					<a href="#">互动交流</a>
+					&gt;
 				</li>
-				<li>&gt;</li>
-				<li>领导信箱</li>
+				<th:block th:each="cata :${#CataData.getCatalogPosition(site.id,catalog.id)}">
+					<li th:switch = "${cataStat.last} eq false">
+						<a th:case="true" th:href="${cata.linkUrl}">[[${cata.name}]]</a>
+						<a th:case="false">[[${cata.name}]]</a>
+					</li>
+					<li th:if="${cataStat.last} eq false">&gt;</li>
+				</th:block>
 			</ul>
 		</div>
 		<!-- 列表 -->
 		<div class="g-list">
 			<div class="g-lt left">
+				th:block th:with="catalogList = ${#CataData.getCatalogChildrenTree(site.id,catalog.parentId !=0 ? catalog.parentId : catalog.id )}">
 				<div class="m-lt-tnm">
-					互动交流
+					[[${parentCatalog.name}]]
 				</div>
 				<div class="m-lt-list">
 					<ul>
-						<li class="hover">
-							<a href="#">领导信箱</a>
-						</li>
-						<li>
-							<a href="#">征集调查</a>
-						</li>
-						<li>
-							<a href="#">常见问题</a>
-						</li>
-						<li>
-							<a href="#">留言反馈</a>
-						</li>
+						<th:block th:each="cataq : ${catalogList}">
+							<li th:id="${'one_'+cataq.id}" th:onclick="setTab([[one_+${cataq.id}]],[[${cataqStat.count}]],[[${cataq.size}]])" th:class="${cataq.id == catalog.id ? 'hover' : ''}"><a th:href="${cataq.linkUrl}"  th:target="${cataq.flagExternal == 1 ? '_blank':'_self'}" th:text="${cataq.name}">[[${cataq.name}]]</a></li>
+						</th:block>
 					</ul>
 				</div>
+				</th:block>
 			</div>
 			<div class="g-rt right">
 				<div class="g-news-list">

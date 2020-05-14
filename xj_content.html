@@ -22,38 +22,35 @@
 			<ul>
 				<li>当前位置：</li>
 				<li>
-					<a href="#">首页</a>
+					<a href="/">首页</a>
 				</li>
-				<li>&gt;</li>
 				<li>
-					<a href="#">互动交流</a>
+					&gt;
 				</li>
-				<li>&gt;</li>
-				<li>领导信箱</li>
+				<th:block th:each="cata :${#CataData.getCatalogPosition(site.id,catalog.id)}">
+					<li th:switch = "${cataStat.last} eq false">
+						<a th:case="true" th:href="${cata.linkUrl}">[[${cata.name}]]</a>
+						<a th:case="false">[[${cata.name}]]</a>
+					</li>
+					<li th:if="${cataStat.last} eq false">&gt;</li>
+				</th:block>
 			</ul>
 		</div>
 		<!-- 列表 -->
 		<div class="g-list">
 			<div class="g-lt left">
+				<th:block th:with="catalogList = ${#CataData.getCatalogChildrenTree(site.id,catalog.parentId !=0 ? catalog.parentId : catalog.id )}">
 				<div class="m-lt-tnm">
-					互动交流
+					[[${parentCatalog.name}]]
 				</div>
 				<div class="m-lt-list">
 					<ul>
-						<li class="hover">
-							<a href="#">领导信箱</a>
-						</li>
-						<li>
-							<a href="#">征集调查</a>
-						</li>
-						<li>
-							<a href="#">常见问题</a>
-						</li>
-						<li>
-							<a href="#">留言反馈</a>
-						</li>
+						<th:block th:each="cataq : ${catalogList}">
+							<li th:id="${'one_'+cataq.id}" th:onclick="setTab([[one_+${cataq.id}]],[[${cataqStat.count}]],[[${cataq.size}]])" th:class="${cataq.id == catalog.id ? 'hover' : ''}"><a th:href="${cataq.linkUrl}"  th:target="${cataq.flagExternal == 1 ? '_blank':'_self'}" th:text="${cataq.name}">[[${cataq.name}]]</a></li>
+						</th:block>
 					</ul>
 				</div>
+				</th:block>
 			</div>
 			<div class="g-rt right">
 				<div class="g-news-list">
@@ -62,85 +59,93 @@
 
 					<div class="m-xjcontent">
 		                <div class="formArea">
-		                    <table class="list_table">
-		                        <tbody><tr>
-		                            <th colspan="2">信件内容</th>
-		                            </tr>
-		                            <tr class="double">
-		                                <td width="120px" align="center">提交人</td>
-		                                <td align="left">&nbsp;&nbsp;&nbsp;&nbsp;郭静文</td>
-		                            </tr>
-		                            <tr class="single">
-		                                <td width="120px" align="center">信件标题</td>
-		                                <td align="left">&nbsp;&nbsp;&nbsp;&nbsp;关于企事业单位招聘问题</td>
-		                            </tr>
-		                            <tr class="double">
-		                                <td width="120px" align="center">提交时间</td>
-		                                <td align="left">&nbsp;&nbsp;&nbsp;&nbsp;2020-04-22</td>
-		                            </tr>
-		                            <tr class="single">
-		                                <td width="120px" align="center">信件内容</td>
-		                                <td align="left">
-		                                    <div class="xjcontent">2020年的企事业单位招聘什么时候开始啊，我可以在哪里咨询到？</div>
-		                                </td>
-		                            </tr>
-		                        </tbody>
-		                    </table>
-		                    <div class="blank15"></div>
-		                    <table class="list_table">
-		                        <tbody>
-		                            <tr>
-		                                <th colspan="2">回复内容</th>
-		                            </tr>
-		                            <tr class="single">
-		                                <td width="120px" align="center">回复部门</td>
-		                                <td align="left">&nbsp;&nbsp;&nbsp;&nbsp;县政府办公室</td>
-		                            </tr>
-		                            <tr class="double">
-		                                <td width="120px" align="center">回复时间</td>
-		                                <td align="left">&nbsp;&nbsp;&nbsp;&nbsp;2020-04-24</td>
-		                            </tr>
-		                            <tr class="single">
-		                                <td width="120px" align="center">回复内容</td>
-		                                <td align="left">
-		                                    <div class="xjcontent"><p style="text-indent: 2em; text-align: left;">网友您好：</p><p style="text-indent: 2em; text-align: left;">来信已收悉，现将该问题回复如下：</p><p style="text-indent: 2em; text-align: left;">事业单位工作人员招聘权限在省、市人事综合部门，具体招聘时间未定，请您留意陕西人事考试网和榆林市人力资源和社会保障局网站发布的招聘信息。</p><p style="text-indent: 2em; text-align: left;">感谢您对县长信箱的关注与支持。</p></div>
-		                                </td>
-		                            </tr>
-		                        </tbody>
-		                    </table>
+							<table class="list_table">
+								<tbody><tr>
+									<th colspan="2">信件内容</th>
+								</tr>
+								<tr class="double">
+									<td width="120px" align="center">提交人</td>
+									<td align="left">&nbsp;&nbsp;&nbsp;&nbsp;[[${appealData.userName}]]</td>
+								</tr>
+								<tr class="single">
+									<td width="120px" align="center">信件标题</td>
+									<td align="left">&nbsp;&nbsp;&nbsp;&nbsp;[[${appealData.title}]]</td>
+								</tr>
+								<tr class="double">
+									<td width="120px" align="center">提交时间</td>
+									<td align="left">&nbsp;&nbsp;&nbsp;&nbsp;[[${#dates.format(item.createTime,'yyyy-MM-dd')}]]</td>
+								</tr>
+								<tr class="single">
+									<td width="120px" align="center">信件内容</td>
+									<td align="left">
+										<div class="xjcontent" th:utext="${appealData.content}">[[${appealData.content}]]</div>
+									</td>
+								</tr>
+								</tbody>
+							</table>
+							<div class="g-blk15"></div>
+							<table class="list_table">
+								<tbody>
+								<tr>
+									<th colspan="2">回复内容</th>
+								</tr>
+								<tr class="single">
+									<td width="120px" align="center">回复部门</td>
+									<td align="left">&nbsp;&nbsp;&nbsp;&nbsp;[[${appealData.replyContent}]]</td>
+								</tr>
+								<tr class="double">
+									<td width="120px" align="center">回复时间</td>
+									<td align="left">&nbsp;&nbsp;&nbsp;&nbsp;[[${#dates.format(item.replyTime,'yyyy-MM-dd')}]]</td>
+								</tr>
+								<tr class="single">
+									<td width="120px" align="center">回复内容</td>
+									<td align="left">
+										<div class="xjcontent" th:utext="${appealData.replyContent}">[[${appealData.replyContent}]]</div>
+									</td>
+								</tr>
+								</tbody>
+							</table>
 		                    <div class="blank9"></div>
 		                    <div class="blank9"></div>
-		                    <form id="satisForm" class="" method="post" action="submit.jsp" target="submitFrame">
-		                        <input type="hidden" id="sq_id" name="sq_id" value="3084">
-		                        <input type="hidden" id="action_type" name="action_type" value="saveScore">
-		                        <div class="textLeft myddcBox">
-		                            <div class="myddc">满意度调查</div>
-		                            <div class="blank9"></div>
-		                            <table width="65%" border="0" cellpadding="0" cellspacing="0">
-		                                <tbody><tr style="height:40px;line-height:40px;">
-		                                    <td width="80">满意度：</td>
-		                                    <td><input type="radio" id="myd" name="myd" value="非常满意" checked="checked"> 非常满意&nbsp;&nbsp;
-		                                        <input type="radio" id="myd" name="myd" value="满意"> 满意&nbsp;&nbsp;
-		                                        <input type="radio" id="myd" name="myd" value="不满意"> 不满意&nbsp;&nbsp;
-		                                    </td>
-		                                </tr>
-		                                <tr style="height:40px;line-height:40px;">
-		                                    <td>验证码：</td>
-		                                    <td><input id="auth_code" name="auth_code" type="text" class="input_text" value="" maxlength="4" style="width:78px;"><img alt="" src="/servlet/CreateImage" id="img" align="absmiddle">&nbsp;&nbsp;<span class="f_red">=?(请输入计算结果)</span>
-		                                        <a href="javascript:changeCreateImage();" style="color: #337ab7;">看不清，请换一张</a>
-		                                        <div class="cError"></div>
-		                                    </td>
-		                                </tr>
-		                            </tbody>
-		                        </table>
-		                            <div class="blank12"></div> 
-		                            <div class="textLeft" style="text-align:center;">
-		                                <input class="btn_search" id="btnPublish" name="btnPublish" type="submit" value="提&nbsp;&nbsp;交">
-		                                <input class="btn_search" type="button" value="统计结果" onclick="window.location.href='/info/iList.jsp?tm_id=240&amp;sq_id=3084'">
-		                            </div>
-		                            <div class="blank12"></div>
-		                        </div>
-		                    </form>
+							<form id="satisForm">
+								<input type="hidden" id="appealId" name="appealId" th:value="${appealData.id}"><!--信件ID-->
+								<input type="hidden" id="actionType" name="actionType" value="insertAppealSatis"><!--表单类型-->
+								<input type="hidden" name="random" id="random" value=""><!--验证码KEY-->
+								<div class="contentBox9 textLeft myddcBox">
+									<div class="myddc">满意度调查</div>
+									<div class="blank9"></div>
+									<table width="65%" border="0" cellpadding="0" cellspacing="0">
+										<tbody><tr style="height:40px;line-height:40px;">
+											<td width="80">满意度：</td>
+											<td id="tjForm">
+                                            <span th:each="satis,satisStat : ${#AppealData.getSatisfactionList()}" th:switch="${satisStat.index}">
+                                                <input type="radio" name="satisId" th:case="0" checked th:value="${satis.id}"/>
+                                                <input type="radio" name="satisId" th:case="*" th:value="${satis.id}"/>[[${satis.name}]]&nbsp;&nbsp;
+                                            </span>
+											</td>
+											<td id="tjJieguo" style="display: none;">
+                                            <span th:each="count : ${#AppealData.getAppealSatisCountByAppealId(appealData.id)}">
+                                                [[${count.name}]]:[[${count.totle}]]
+                                            </span>
+											</td>
+										</tr>
+										<tr style="height:40px;line-height:40px;">
+											<td>验证码：</td>
+											<td><input id="verifyCode" name="verifyCode" type="text" class="input_text" value="" maxlength="4" style="width:78px;"><img alt="" width="80" height="22" id="img" align="absmiddle">&nbsp;&nbsp;<span class="f_red">=?(请输入计算结果)</span>
+												<a href="javascript:changeCreateImage();">看不清，请换一张</a>
+												<div class="cError"></div>
+											</td>
+										</tr>
+										</tbody>
+									</table>
+									<div class="g-blk12"></div>
+									<div class="textLeft" style="text-align:center;">
+										<input class="btn_search" id="btnPublish" name="btnPublish" type="button" onclick="insertAppealSatis()" value="提&nbsp;&nbsp;交">
+										<input class="btn_search" type="button" value="统计结果" onclick="showJieguo()">
+									</div>
+									<div class="g-blk12"></div>
+								</div>
+							</form>
 		                    <div class="blank12"></div>      
 		                </div>
 		            </div>
