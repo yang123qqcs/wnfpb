@@ -1,110 +1,104 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<!-- 通用_全站公用META start -->
-	<!--#include virtual='/common/sitemeta.html'-->
-	<!-- 通用_全站公用META end -->
-	<!-- 列表页meate start -->
-	<!--#include virtual='/common/listmeate.html'-->
-	<!-- 列表页meate end -->
-	<!-- 全站CSSJS start -->
-	<!--#include virtual='/common/cssjs.html'-->
-	<!-- 全站CSSJS end -->
+<meta charset="utf-8">
+<!-- 通用_全站公用META start -->
+<!--#include virtual='/common/sitemeta.html'-->
+<!-- 通用_全站公用META end -->
+<!-- 列表页meate start -->
+<!--#include virtual='/common/listmeate.html'-->
+<!-- 列表页meate end -->
+<!-- 全站CSSJS start -->
+<!--#include virtual='/common/cssjs.html'-->
+<!-- 全站CSSJS end -->
 </head>
 <body>
-	<!-- 头部 -->
-	<!-- 头部 start -->
-	<!--#include virtual='/common/header.html'-->
-	<!-- 头部 end -->
-	<!-- 通用列表 -->
-	<div class="g-bd g-list-bd">
-		<!-- 列表页当前位置 -->
-		<div class="m-local">
-			<ul>
-				<li>当前位置：</li>
-				<li>
-					<a href="/">首页</a>
+<!-- 头部 -->
+<!-- 头部 start -->
+<!--#include virtual='/common/header.html'-->
+<!-- 头部 end -->
+<!-- 通用列表 -->
+<div class="g-bd g-list-bd">
+	<!-- 列表页当前位置 -->
+	<div class="m-local">
+		<ul>
+			<li>当前位置：</li>
+			<li>
+				<a href="/">首页</a>
+			</li>
+			<th:block th:each="cata :${#CataData.getCatalogPosition(site.id,catalog.id)}">
+				<li th:switch = "${cataStat.last} eq false">
+					<a th:case="true" th:href="${cata.linkUrl}">[[${cata.name}]]</a>
+					<a th:case="false">[[${cata.name}]]</a>
 				</li>
-				<th:block th:each="cata :${#CataData.getCatalogPosition(site.id,catalog.id)}">
-					<li th:switch = "${cataStat.last} eq false">
-						<a th:case="true" th:href="${cata.linkUrl}">[[${cata.name}]]</a>
-						<a th:case="false">[[${cata.name}]]</a>
-					</li>
-					<li th:if="${cataStat.last} eq false">&gt;</li>
-				</th:block>
-			</ul>
+				<li th:if="${cataStat.last} eq false">&gt;</li>
+			</th:block>
+		</ul>
+	</div>
+	<!-- 列表 -->
+	<div class="g-list">
+		<div class="g-lt left">
+			<th:block th:with="catalogList = ${#CataData.getCatalogChildrenTree(site.id,catalog.parentId !=0 ? catalog.parentId : catalog.id )}">
+			<div class="m-lt-tnm">
+				[[${rootCatalog.name}]]
+			</div>
+			<div class="m-lt-list">
+				<ul>
+					<th:block th:each="cataq : ${catalogList}">
+						<li th:id="${'one_'+cataq.id}" th:onclick="setTab([[one_+${cataq.id}]],[[${cataqStat.count}]],[[${cataq.size}]])" th:class="${cataq.id == catalog.id ? 'hover' : ''}"><a th:href="${cataq.linkUrl}"  th:target="${cataq.flagExternal == 1 ? '_blank':'_self'}" th:text="${cataq.name}">[[${cataq.name}]]</a></li>
+					</th:block>
+				</ul>
+			</div>
+			</th:block>
 		</div>
-		<!-- 列表 -->
-		<div class="g-list">
-			<div class="g-lt left">
-				<th:block th:with="catalogList = ${#CataData.getCatalogChildrenTree(site.id,catalog.parentId !=0 ? catalog.parentId : catalog.id )}">
-				<div class="m-lt-tnm">
-					[[${rootCatalog.name}]]
+
+		<div class="g-rt right">
+			<div class="g-news-list">
+				<div class="blank22"></div>
+				<div class="m-tlt">
+					<div class="u-nm">
+						[[${catalog.name}]]
+					</div>
 				</div>
-				<div class="m-lt-list">
+				<th:block th:with="infoList = ${#InfoData.getInfoList(#{'siteId':site.id,'catId':catalog.id,'orderby','st.resource_publication_date'},pageNo,20)}">
+				<div class="m-list">
 					<ul>
-						<th:block th:each="cataq : ${catalogList}">
-							<li th:id="${'one_'+cataq.id}" th:onclick="setTab([[one_+${cataq.id}]],[[${cataqStat.count}]],[[${cataq.size}]])" th:class="${cataq.id == catalog.id ? 'hover' : ''}"><a th:href="${cataq.linkUrl}"  th:target="${cataq.flagExternal == 1 ? '_blank':'_self'}" th:text="${cataq.name}">[[${cataq.name}]]</a></li>
-						</th:block>
+						<th:block th:each="item : ${infoList.records}">
+							<th:block th:if="${itemStat.count == 6 || ${itemStat.count == 11}">
+									</ul>
+									<ul>
+								</th:block>
+				<li>
+					<span>[[${#dates.format(item.resourcePublicationDate,'yyyy-MM-dd')}]]</span><a th:href="${item.url}" target="_blank" th:title="${item.title}">[[${item.title}]]</a>
+				</li>
+							</th:block>
+
 					</ul>
 				</div>
-				</th:block>
-			</div>
-
-			<div class="g-rt right">
-				<div class="g-news-list">
-					<div class="blank22"></div>
-					<div class="m-tlt">
-						<div class="u-nm">
-							[[${catalog.name}]]
-						</div>
-					</div>
-					<th:block th:with="infoList = ${#InfoData.getInfoList(#{'siteId':site.id,'catId':catalog.id,'orderby','st.resource_publication_date'},pageNo,20)}">
-					<div class="m-list">
-						<ul>
-								<th:block th:each="item : ${infoList.records}">
-									<th:block th:if="${itemStat.count == 6 || ${itemStat.count == 11}">
-						                </ul>
-										<ul>
-									</th:block>
-									<li th:with="infoObj = ${#InfoData.getInfoById(item.id)}">
-										<a th:href="${item.url}" target="_blank" th:title="${item.title}">
-											<div class="shijian"><p class="day">[[${#dates.format(item.resourcePublicationDate,'dd')}]]</p><p class="year">[[${#dates.format(item.resourcePublicationDate,'yyyy/MM')}]]</p></div>
-											<div class="sinfo">
-												<h1 th:title="${item.title}">[[${item.title}]]</h1>
-												<p th:if="${infoObj.resourceSummary!=''}">[[${#strings.abbreviate(infoObj.resourceSummary,93)}]]</p>
-											</div>
-										</a>
-									</li>
-								</th:block>
-
-						</ul>
-					</div>
-					<!--翻页-->
-					<div class="m-lst-pg">
-						<span><a th:href="${infoList.firstPageUrl}">首页</a></span>
-						<span><a th:href="${infoList.prePageUrl}">上一页</a></span>
-						<span><a th:href="${infoList.nextPageUrl}">下一页</a></span>
-						<span><a th:href="${infoList.endPageUrl}">末页</a></span>
-						<span th:text="'共'+${infoList.total}+'条记录'">共${infoList.total}条记录</span>
-						<span th:text="'共'+${infoList.pages}+'页'">共${infoList.pages}页</span>
-						<span>跳转到</span>
-						<select onchange="location.href=this.options[this.selectedIndex].value;">
-							<option th:each="p,status : ${infoList.pageList}" th:value="${p}" th:selected="${status.index+1} == ${infoList.current}" th:text="${status.index+1}">[[${status.index+1}]]</option>
-						</select>
-						<span>页</span>
-					</div>
-					</th:block>
-					<!--翻页end-->
+				<!--翻页-->
+				<div class="m-lst-pg">
+					<span><a th:href="${infoList.firstPageUrl}">首页</a></span>
+					<span><a th:href="${infoList.prePageUrl}">上一页</a></span>
+					<span><a th:href="${infoList.nextPageUrl}">下一页</a></span>
+					<span><a th:href="${infoList.endPageUrl}">末页</a></span>
+					<span th:text="'共'+${infoList.total}+'条记录'">共${infoList.total}条记录</span>
+					<span th:text="'共'+${infoList.pages}+'页'">共${infoList.pages}页</span>
+					<span>跳转到</span>
+					<select onchange="location.href=this.options[this.selectedIndex].value;">
+						<option th:each="p,status : ${infoList.pageList}" th:value="${p}" th:selected="${status.index+1} == ${infoList.current}" th:text="${status.index+1}">[[${status.index+1}]]</option>
+					</select>
+					<span>页</span>
 				</div>
+				</th:block>
+				<!--翻页end-->
 			</div>
 		</div>
 	</div>
+</div>
 
-	<!-- 版权 -->
-	<!-- 尾部及友情链接 start -->
-	<!--#include virtual='/common/footer.html'-->
-	<!-- 尾部及友情链接 end -->
+<!-- 版权 -->
+<!-- 尾部及友情链接 start -->
+<!--#include virtual='/common/footer.html'-->
+<!-- 尾部及友情链接 end -->
 </body>
 </html>

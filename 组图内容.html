@@ -11,6 +11,47 @@
 	<!-- 全站CSSJS start -->
 	<!--#include virtual='/common/cssjs.html'-->
 	<!-- 全站CSSJS end -->
+	<script type="text/javascript" src="js/tp/access.js"></script>
+	<script type="text/javascript" src="js/photo/jquery.jcarousellite.min.js"></script>
+	<script type="text/javascript" src="js/photo/slidePic.js"></script>
+	<link rel="stylesheet" type="text/css" href="js/photo/pic.css"/>
+
+	<script th:inline="javascript">
+
+		//拉取组图内容
+		$(document).ready(function(){
+			getZT();
+		});
+		var getZT = function() {  //获取组图列表
+			var index = 0 ;
+			var jsonurl= [[${infoData.content.mc_picarray}]];
+			var json = $.parseJSON(jsonurl);
+			var str = '';
+			var str2 = '';
+			for(var i=0; i<json.length; i++) {
+				index = index + 1;
+				str += '<p style="display:none;"><span class="SliderPicBorder"><img src="'+json[i].url+'" /></span><span class="Clearer"></span><span class="Summary">'+json[i].remark+'</span></p>';
+				str2 += '<li rel='+index+'><img src="'+json[i].url+'" /></li>';
+			}
+			if (str != "") {
+				$('#aNext').after(str);
+				$('#ThumbPic').append(str2);
+			}
+		};
+
+		$(document).ready(function(){
+			//缩略图滚动事件
+			$(".jCarouselLite").jCarouselLite({
+				btnNext: "#btnNext",
+				btnPrev: "#btnPrev",
+				scroll: 1,
+				speed: 240,
+				circular: false,
+				visible: 6
+			});
+		});
+
+	</script>
 </head>
 <body>
 	<!-- 头部 -->
@@ -63,7 +104,32 @@
 					    </div> 
 		        	</div>
 		        </div>
-		        <div class="m-ct-artcle" style="font-size: 16px;">
+
+				<div id="info_pic">
+					<!--组图显示 开始-->
+					<div class="OriginalPicBorder">
+						<div id="OriginalPic">
+							<div id="aPrev" class="CursorL"></div>
+							<div id="aNext" class="CursorR"></div>
+
+						</div>
+					</div>
+					<div class="line1px"></div>
+					<div class="g-blk15"></div>
+					<div class="ThumbPicBorder">
+						<div id="btnPrev"></div>
+						<div class="jCarouselLite left">
+							<ul id="ThumbPic">
+							</ul>
+							<div class="clearBoth"></div>
+						</div>
+						<div id="btnNext"></div>
+						<div class="clearBoth"></div>
+					</div>
+					<!--组图显示 结束-->
+				</div>
+
+		        <div class="m-ct-artcle" style="font-size: 16px;" th:if="${infoData.resourceContent!=null}" th:utext="${infoData.resourceContent}">
 					[[${infoData.resourceContent}]]
 		        </div>
 		

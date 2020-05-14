@@ -1,0 +1,16 @@
+/*大图展示区域*/
+.OriginalPicBorder{padding:15px 15px 0 15px;}
+#OriginalPic{width:800px;overflow:hidden;position:relative;font-size:12px; margin:0 auto;}
+#OriginalPic img{display:block;margin:0 auto;}
+/*鼠标手势*/
+.CursorL{position:absolute;width:50%;height:90%;color:#FFF; left:0; top:0; cursor:url(img/bg11.cur), auto; overflow:hidden; background:#fff; filter:alpha(opacity=0);  -moz-opacity:0;  -khtml-opacity: 0; opacity: 0;   }
+.CursorR{position:absolute;width:50%;height:90%;color:#FFF; right:0; top:0;  cursor:url(img/bg12.cur), auto;overflow:hidden;  background:#fff; filter:alpha(opacity=0);  -moz-opacity:0;  -khtml-opacity: 0; opacity: 0; }
+/*小图预览和滑动*/
+.SliderPicBorder{width:720px;height:600px;overflow:hidden;}
+.SummaryTitle{ clear:both; padding-top:10px; display:inline-block; font-weight:bold; font-size:14px;}
+.Summary{line-height:26px;display:block;overflow:hidden;padding-top:10px;padding-bottom:10px; font-size:14px;}
+.ThumbPicBorder {width:758px;margin:0 auto;}
+#ThumbPic img{border:3px solid #cdcdc8;cursor:pointer;background-color:#cdcdc8;margin:0 4px;width:105px;height:80px;display:block;}
+#ThumbPic img.active{border:3px solid #FF9900;}
+#btnNext{ float:left; display:inline; cursor:pointer; background:url(img/bg05.png) -62px 10px no-repeat; width:21px; height:80px;}
+#btnPrev{ float:left; display:inline; cursor:pointer; background:url(img/bg05.png) -20px 10px no-repeat; width:21px; height:80px;}
