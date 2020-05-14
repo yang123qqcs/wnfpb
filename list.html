@@ -26,6 +26,9 @@
 			<li>
 				<a href="/">首页</a>
 			</li>
+			<li>
+				&gt;
+			</li>
 			<th:block th:each="cata :${#CataData.getCatalogPosition(site.id,catalog.id)}">
 				<li th:switch = "${cataStat.last} eq false">
 					<a th:case="true" th:href="${cata.linkUrl}">[[${cata.name}]]</a>
