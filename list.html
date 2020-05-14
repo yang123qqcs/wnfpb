@@ -43,7 +43,7 @@
 		<div class="g-lt left">
 			<th:block th:with="catalogList = ${#CataData.getCatalogChildrenTree(site.id,catalog.parentId !=0 ? catalog.parentId : catalog.id )}">
 			<div class="m-lt-tnm">
-				[[${Catalog.parentId.name}]]
+				[[${parentCatalog.name}]]
 			</div>
 			<div class="m-lt-list">
 				<ul>
