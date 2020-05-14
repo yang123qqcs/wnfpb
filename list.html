@@ -64,12 +64,9 @@
 				<div class="m-list">
 					<ul>
 						<th:block th:each="item : ${infoList.records}">
-							<th:block th:if="${itemStat.count == 6 || ${itemStat.count == 11}">
-									</ul>
-									<ul>
-								</th:block>
+
 				<li>
-					<span></span><a th:href="${item.url}" target="_blank" th:title="${item.title}">[[${item.title}]]</a>
+					<span>[[${#dates.format(item.resourcePublicationDate,'yyyy-MM-dd')}]]</span><a th:href="${item.url}" target="_blank" th:title="${item.title}">[[${item.title}]]</a>
 				</li>
 							</th:block>
 
