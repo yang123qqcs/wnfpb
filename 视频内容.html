@@ -68,7 +68,7 @@
 		        </div>
 		        <div class="m-ct-artcle" style="font-size: 16px;" th:if="${infoData.resourceContent!=null}" th:utext="${infoData.resourceContent}">
 					<div class="prism-player" id="player-con"></div>
-					<script type="text/javascript">
+					<script type="text/javascript" th:inline="javascript">
 						var player = new Aliplayer({
 									"id": "player-con",
 									"source":  "[[${infoData.video}]]",
