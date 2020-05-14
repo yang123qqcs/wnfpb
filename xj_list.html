@@ -22,38 +22,35 @@
 			<ul>
 				<li>当前位置：</li>
 				<li>
-					<a href="#">首页</a>
+					<a href="/">首页</a>
 				</li>
-				<li>&gt;</li>
 				<li>
-					<a href="#">互动交流</a>
+					&gt;
 				</li>
-				<li>&gt;</li>
-				<li>领导信箱</li>
+				<th:block th:each="cata :${#CataData.getCatalogPosition(site.id,catalog.id)}">
+					<li th:switch = "${cataStat.last} eq false">
+						<a th:case="true" th:href="${cata.linkUrl}">[[${cata.name}]]</a>
+						<a th:case="false">[[${cata.name}]]</a>
+					</li>
+					<li th:if="${cataStat.last} eq false">&gt;</li>
+				</th:block>
 			</ul>
 		</div>
 		<!-- 列表 -->
 		<div class="g-list">
 			<div class="g-lt left">
-				<div class="m-lt-tnm">
-					互动交流
-				</div>
-				<div class="m-lt-list">
-					<ul>
-						<li class="hover">
-							<a href="#">领导信箱</a>
-						</li>
-						<li>
-							<a href="#">征集调查</a>
-						</li>
-						<li>
-							<a href="#">常见问题</a>
-						</li>
-						<li>
-							<a href="#">留言反馈</a>
-						</li>
-					</ul>
-				</div>
+				<th:block th:with="catalogList = ${#CataData.getCatalogChildrenTree(site.id,catalog.parentId !=0 ? catalog.parentId : catalog.id )}">
+					<div class="m-lt-tnm">
+						[[${parentCatalog.name}]]
+					</div>
+					<div class="m-lt-list">
+						<ul>
+							<th:block th:each="cataq : ${catalogList}">
+								<li th:id="${'one_'+cataq.id}" th:onclick="setTab([[one_+${cataq.id}]],[[${cataqStat.count}]],[[${cataq.size}]])" th:class="${cataq.id == catalog.id ? 'hover' : ''}"><a th:href="${cataq.linkUrl}"  th:target="${cataq.flagExternal == 1 ? '_blank':'_self'}" th:text="${cataq.name}">[[${cataq.name}]]</a></li>
+							</th:block>
+						</ul>
+					</div>
+				</th:block>
 			</div>
 			<div class="g-rt right">
 				<div class="g-news-list">
@@ -63,131 +60,86 @@
 	                    <!--信件统计、查询、写信按钮-->
 	                    <div class="m-xxtj">
 	                        <div class="lxtj">
-	                            <span>来信：<em>8778</em></span>
-	                            <span>本月来信：<em>78</em></span>
-	                            <span>今日来信：<em>24</em></span>
+								<span>本年度来信：<em th:each="item :${#AppealData.getAllAppealCount(#{'modelId':'1260800325208510465','countData':'years'})}" th:text="${item.allCount}"></em></span>
+								<span>本月来信：<em th:each="item :${#AppealData.getAllAppealCount(#{'modelId':'1260800325208510465','countData':'instant'})}" th:text="${item.allCount}"></em></span>
+								<span>今日来信：<em th:each="item :${#AppealData.getAllAppealCount(#{'modelId':'1260800325208510465','countData':'curday'})}" th:text="${item.allCount}"></em></span>
 	                        </div>
 	                        <div class="lxcx">
-	                            <span>信件编号</span>
-	                            <span><input class="cxinput" type="text" value="" placeholder="请输入信件编号"></span>
-	                            <span>查询码</span>
-	                            <span><input class="cxinput" type="text" value="" placeholder="请输入查询码"></span>
-	                            <span><input type="button" class="cxbtn" value="查询"></span>
+								<span>信件编号</span>
+								<span><input class="cxinput" id="sqCode" name="sqCode" type="text" placeholder="请输入信件编号"></span>
+								<span>查询码</span>
+								<span><input class="cxinput" id="queryCode" name="queryCode" type="text" placeholder="请输入查询码"></span>
+								<span><input type="button" class="cxbtn" onclick="btnSearch()" value="查询"></span>
 	                        </div>
-	                        <a href="#" class="wyxx">我要写信</a>
+							<script th:inline="javascript">
+								function btnSearch(){
+									var sqCode = $("#sqCode").val();
+									var queryCode = $("#queryCode").val();
+									if(sqCode == ""){
+										alert("请输入信件编码");
+										return false;
+									}
+									if(queryCode == ""){
+										alert("请输入查询码");
+										return false;
+									}
+									var pathName = [[${catalog.pathName}]];
+									location.href='/'+pathName+'/info/appeal/search.html?sqCode='+sqCode+'&queryCode='+queryCode;
+								}
+							</script>
+							<th:block th:with="model=${#AppealData.getModelById('1260800325208510465',site.id,catalog.id)}">
+								<a th:href="${model.formUrl}" class="wyxx">我要写信</a>
+							</th:block>
+
 	                    </div>
 	                    <!--信件统计、查询、写信按钮-->
 	                    <div class="g-blk15"></div>
 	                    <!--信件列表-->
-	                    <div class="m-xjlist infohd">
-	                        <table>
-	                          <thead>
-	                            <tr>
-	                                <td id="xjbh">信件编号</td>
-	                                <td id="xjbt">信件标题</td>
-	                                <td id="shijian">提交时间</td>
-	                                <td id="shijian">答复时间</td>
-	                                <td id="clzt">回复状态</td>
-	                            </tr>
-	                          </thead>
-	                            <tbody>
-	                                <tr>
-	                                    <td id="xjbh">GPPS20200223</td>
-	                                    <td class="xjbt"><a href="/appeal/view.jsp?model_id=1&amp;sq_id=2365&amp;hv_id=1" target="_blank" title="咨询异地就医新农合报销问题">咨询异地就医新农合报销问题</a></td>
-	                                    <td id="shijian">2020-02-12</td>
-	                                    <td class="shijian">2020-02-12</td>
-	                                    <td class="clzt">已回复</td>
-	                                </tr>
-	                                <tr>
-	                                    <td id="xjbh">GPPS20200223</td>
-	                                    <td class="xjbt"><a href="/appeal/view.jsp?model_id=1&amp;sq_id=2365&amp;hv_id=1" target="_blank" title="咨询异地就医新农合报销问题">咨询异地就医新农合报销问题</a></td>
-	                                    <td id="shijian">2020-02-12</td>
-	                                    <td class="shijian">2020-02-12</td>
-	                                    <td class="clzt">已回复</td>
-	                                </tr>
-	                                <tr>
-	                                    <td id="xjbh">GPPS20200223</td>
-	                                    <td class="xjbt"><a href="/appeal/view.jsp?model_id=1&amp;sq_id=2365&amp;hv_id=1" target="_blank" title="咨询异地就医新农合报销问题">咨询异地就医新农合报销问题</a></td>
-	                                    <td id="shijian">2020-02-12</td>
-	                                    <td class="shijian">2020-02-12</td>
-	                                    <td class="clzt">已回复</td>
-	                                </tr>
-	                                <tr>
-	                                    <td id="xjbh">GPPS20200223</td>
-	                                    <td class="xjbt"><a href="/appeal/view.jsp?model_id=1&amp;sq_id=2365&amp;hv_id=1" target="_blank" title="咨询异地就医新农合报销问题">咨询异地就医新农合报销问题</a></td>
-	                                    <td id="shijian">2020-02-12</td>
-	                                    <td class="shijian">2020-02-12</td>
-	                                    <td class="clzt">已回复</td>
-	                                </tr>
-	                                <tr>
-	                                    <td id="xjbh">GPPS20200223</td>
-	                                    <td class="xjbt"><a href="/appeal/view.jsp?model_id=1&amp;sq_id=2365&amp;hv_id=1" target="_blank" title="咨询异地就医新农合报销问题">咨询异地就医新农合报销问题</a></td>
-	                                    <td id="shijian">2020-02-12</td>
-	                                    <td class="shijian">2020-02-12</td>
-	                                    <td class="clzt">已回复</td>
-	                                </tr>
-	                                <tr>
-	                                    <td id="xjbh">GPPS20200223</td>
-	                                    <td class="xjbt"><a href="/appeal/view.jsp?model_id=1&amp;sq_id=2365&amp;hv_id=1" target="_blank" title="咨询异地就医新农合报销问题">咨询异地就医新农合报销问题</a></td>
-	                                    <td id="shijian">2020-02-12</td>
-	                                    <td class="shijian">2020-02-12</td>
-	                                    <td class="clzt">已回复</td>
-	                                </tr>
-	                                <tr>
-	                                <td id="xjbh">GPPS20200223</td>
-	                                <td class="xjbt"><a href="/appeal/view.jsp?model_id=1&amp;sq_id=2365&amp;hv_id=1" target="_blank" title="咨询异地就医新农合报销问题">咨询异地就医新农合报销问题</a></td>
-	                                <td id="shijian">2020-02-12</td>
-	                                <td class="shijian">2020-02-12</td>
-	                                <td class="clzt">已回复</td>
-	                                </tr>
-	                                <tr>
-	                                <td id="xjbh">GPPS20200223</td>
-	                                <td class="xjbt"><a href="/appeal/view.jsp?model_id=1&amp;sq_id=2365&amp;hv_id=1" target="_blank" title="咨询异地就医新农合报销问题">咨询异地就医新农合报销问题</a></td>
-	                                <td id="shijian">2020-02-12</td>
-	                                <td class="shijian">2020-02-12</td>
-	                                <td class="clzt">已回复</td>
-	                                </tr>
-	                                <tr>
-	                                <td id="xjbh">GPPS20200223</td>
-	                                <td class="xjbt"><a href="/appeal/view.jsp?model_id=1&amp;sq_id=2365&amp;hv_id=1" target="_blank" title="咨询异地就医新农合报销问题">咨询异地就医新农合报销问题</a></td>
-	                                <td id="shijian">2020-02-12</td>
-	                                <td class="shijian">2020-02-12</td>
-	                                <td class="clzt">已回复</td>
-	                                </tr>
-	                                <tr>
-	                                <td id="xjbh">GPPS20200223</td>
-	                                <td class="xjbt"><a href="/appeal/view.jsp?model_id=1&amp;sq_id=2365&amp;hv_id=1" target="_blank" title="咨询异地就医新农合报销问题">咨询异地就医新农合报销问题</a></td>
-	                                <td id="shijian">2020-02-12</td>
-	                                <td class="shijian">2020-02-12</td>
-	                                <td class="clzt">已回复</td>
-	                                </tr>
-	                                <tr>
-	                                <td id="xjbh">GPPS20200223</td>
-	                                <td class="xjbt"><a href="/appeal/view.jsp?model_id=1&amp;sq_id=2365&amp;hv_id=1" target="_blank" title="咨询异地就医新农合报销问题">咨询异地就医新农合报销问题</a></td>
-	                                <td id="shijian">2020-02-12</td>
-	                                <td class="shijian">2020-02-12</td>
-	                                <td class="clzt">已回复</td>
-	                                </tr>
-	                    
-	                             </tbody>
-	                        </table>
-	                    </div>
-	                    <!--信件列表-->
-	                    <div class="g-blk15"></div>
-	                    <!--信件翻页-->
-	                    <div class="m-lst-pg">
-	                        <span><a href="/zwgk/jbxxml/ldzc/xzfld/xz/hxr/zyhdjjh/1.html">首页</a></span>
-	                        <span><a href="/zwgk/jbxxml/ldzc/xzfld/xz/hxr/zyhdjjh/1.html">上一页</a></span>
-	                        <span><a href="/zwgk/jbxxml/ldzc/xzfld/xz/hxr/zyhdjjh/1.html">下一页</a></span>
-	                        <span><a href="/zwgk/jbxxml/ldzc/xzfld/xz/hxr/zyhdjjh/1.html">末页</a></span>
-	                        <span>共4条记录</span>
-	                        <span>共1页</span>
-	                    <span>跳转到</span>
-	                        <select onchange="location.href=this.options[this.selectedIndex].value;">
-	                            <option value="/zwgk/jbxxml/ldzc/xzfld/xz/hxr/zyhdjjh/1.html" selected="selected">1</option>
-	                        </select>
-	                        <span>页</span>
-	                    </div>
+						<th:block th:with="appealList = ${#AppealData.getAppealList(#{'modelId':'1260800325208510465','siteId':site.id,'catId':catalog.id,'orderby','st.create_time'},pageNo,11)}">
+							<div class="m-xjlist infohd">
+								<table>
+									<thead>
+									<tr>
+										<td id="xjbh">信件编号</td>
+										<td id="xjbt">信件标题</td>
+										<td id="shijian">提交时间</td>
+										<td id="shijian">答复时间</td>
+										<td id="clzt">回复状态</td>
+									</tr>
+									</thead>
+									<tbody>
+									<tr th:each="item : ${appealList.records}">
+										<td id="xjbh">[[${item.sqCode}]]</td>
+										<td class="xjbt"><a th:href="${item.url}" th:title="${item.title}">[[${item.title}]]</a></td>
+										<td id="shijian">[[${#dates.format(item.createTime,'yyyy-MM-dd')}]]</td>
+										<td class="shijian">[[${#dates.format(item.replyTime,'yyyy-MM-dd')}]]</td>
+										<td class="clzt">
+											<span style="color:#20528f;" th:if="${item.sqStatus==0}">待处理</span>
+											<span style="color:#20528f;" th:if="${item.sqStatus==1}">办理中</span>
+											<span style="color:#20528f;" th:if="${item.sqStatus==3}">已办结</span>
+										</td>
+									</tr>
+									</tbody>
+								</table>
+							</div>
+							<!--信件列表-->
+							<div class="g-blk15"></div>
+							<!--信件翻页-->
+							<div class="m-lst-pg">
+								<span><a th:href="${appealList.firstPageUrl}">首页</a></span>
+								<span><a th:href="${appealList.prePageUrl}">上一页</a></span>
+								<span><a th:href="${appealList.nextPageUrl}">下一页</a></span>
+								<span><a th:href="${appealList.endPageUrl}">末页</a></span>
+								<span th:text="'共'+${appealList.total}+'条记录'">共[[${appealList.total}]]条记录</span>
+								<span th:text="'共'+${appealList.pages}+'页'">共[[${appealList.pages}]]页</span>
+								<span>跳转到</span>
+								<select onchange="location.href=this.options[this.selectedIndex].value;">
+									<option th:each="p,status : ${appealList.pageList}" th:value="${p}" th:selected="${status.index+1} == ${appealList.current}" th:text="${status.index+1}">[[${status.index+1}]]</option>
+								</select>
+								<span>页</span>
+							</div>
+							<!--信件翻页-->
+						</th:block>
 	                    <!--信件翻页-->
 	                </div>
 					
