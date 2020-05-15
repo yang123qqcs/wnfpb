@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<!-- 通用_全站公用META start -->
+<!--#include virtual='/common/sitemeta.html'-->
+<!-- 通用_全站公用META end -->
+<!-- 列表页meate start -->
+<!--#include virtual='/common/listmeate.html'-->
+<!-- 列表页meate end -->
+<!-- 全站CSSJS start -->
+<!--#include virtual='/common/cssjs.html'-->
+<!-- 全站CSSJS end -->
+<script type="text/javascript" src="js/survey.js"></script>
+</head>
+<body>
+<!-- 头部 -->
+<!-- 头部 start -->
+<!--#include virtual='/common/header.html'-->
+<!-- 头部 end -->
+<!-- 通用列表 -->
+<div class="g-bd g-list-bd">
+	<!-- 列表页当前位置 -->
+	<div class="m-local">
+		<ul>
+			<li>当前位置：</li>
+			<li>
+				<a href="/">首页</a>
+			</li>
+			<li>
+				&gt;
+			</li>
+			<th:block th:each="cata :${#CataData.getCatalogPosition(site.id,catalog.id)}">
+				<li th:switch = "${cataStat.last} eq false">
+					<a th:case="true" th:href="${cata.linkUrl}">[[${cata.name}]]</a>
+					<a th:case="false">[[${cata.name}]]</a>
+				</li>
+				<li th:if="${cataStat.last} eq false">&gt;</li>
+			</th:block>
+		</ul>
+	</div>
+	<!-- 列表 -->
+	<div class="g-list">
+		<div class="m-ct">
+			<div class="m-ct-tt-bd">
+				<div class="m-ct-tt" th:text="${surveyData.title}">[[${surveyData.title}]]</div>
+			</div>
+			<div class="g-blk15"></div>
+			<div class="g-blk5"></div>
+			<div class="m-ct-crm">
+				<span>开始日期：<span th:text="${#dates.format(surveyData.startTime,'yyyy-MM-dd')}">[[${surveyData.startTime}]]</span></span>
+				<span>截止日期：<span th:text="${#dates.format(surveyData.endTime,'yyyy-MM-dd')}">[[${surveyData.endTime}]]</span></span>
+				<span>
+					状态：
+					<span th:if="${surveyData.isEnd==0}">进行中</span>
+                    <span th:if="${surveyData.isEnd==1}">已截止</span>
+                </span>
+				<span class="printIco"><a href="javascript:window.print();">打印</a></span>
+			</div>
+			<div class="g-blk15"></div>
+			<div class="m-ct-artcle" style="min-height:0px;" th:utext="${surveyData.content}">
+				[[${surveyData.content}]]
+			</div>
+			<div class="m-ct-artcle">
+				<!-- 进行中的问卷才显示表单 -->
+				<th:block th:if="${surveyData.isEnd == 0}">
+					<input type="hidden" name="surveyId" id="surveyId" th:value="${surveyData.id}"/>
+					<div th:each="subject : ${surveyData.subjects}" name="subject_item" th:subject-id="${subject.id}" th:sort-num="${subject.sort}" th:is-required="${subject.isRequired}" th:subject-type="${subject.type}">
+						<div id="title_divs">
+							<div id="sort_num" class="sort_num_div">[[${subject.sort}]].</div>
+							<div id="title_span">[[${subject.title}]]([[${subject.count}]])&nbsp;
+								<span id="req_span" class="wargin_span" th:if="${subject.isRequired == 1}">*</span>
+							</div>
+							<div style="CLEAR:both"></div>
+						</div>
+						<div id="des_items_divs">
+							<ul id="item_ul">
+								<th:block th:if="${subject.type == 'radio' || subject.type == 'checkbox' || subject.type == 'select'}">
+									<li class="li_css1" th:each="option : ${subject.options}">
+										<div>
+											<span>[[${option.title}]]([[${option.count}]])--[[${option.rate}]]</span>
+										</div>
+									</li>
+								</th:block>
+								<th:block th:if="${subject.type == 'matrix_radio'}">
+									<!-- 矩阵题 -->
+									<li class="li_css1">
+										<table align="left">
+											<tr>
+												<td></td>
+												<td th:each="option : ${subject.options.matrixdatax}">[[${option.title}]]([[${option.count}]])</td>
+											</tr>
+											<tr th:each="item : ${subject.options.matrixdatay}">
+												<td>[[${item.title}]]([[${item.count}]])</td>
+												<td th:each="option : ${item.options}">
+													[[${option.count}]]-[[${option.rate}]]
+												</td>
+											</tr>
+										</table>
+									</li>
+								</th:block>
+								<th:block th:if="${subject.type == 'text' || subject.type == 'upload'}">
+									<!-- 文本题 -->
+									<li class="li_css1" th:each="answer : ${subject.answerList}">
+										<div>
+											[[${answer.itemText}]]
+										</div>
+									</li>
+								</th:block>
+								<th:block th:if="${subject.type == 'star'}">
+									<!-- 量表题 -->
+									<li class="li_css1">
+										<table align="left">
+											<tr>
+												<td>[[${subject.extentUp}]]</td>
+												<td>
+													<th:block th:each="star : ${subject.starList}">
+														[[${star.optionId}]]([[${star.count}]])-[[${star.rate}]]
+													</th:block>
+												</td>
+												<td>[[${subject.extentDown}]]</td>
+											</tr>
+										</table>
+									</li>
+								</th:block>
+							</ul>
+						</div>
+					</div>
+			</div>
+			</th:block>
+		</div>
+	</div>
+</div>
+
+<!-- 版权 -->
+<!-- 尾部及友情链接 start -->
+<!--#include virtual='/common/footer.html'-->
+<!-- 尾部及友情链接 end -->
+</body>
+</html>
