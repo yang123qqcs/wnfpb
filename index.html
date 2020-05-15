@@ -21,6 +21,7 @@
 <div class="g-ct">
 <!-- 头条 -->
 <th:block th:with="infoList = ${#InfoData.getInfoList(#{'siteId':site.id,'catId':'1260447400196050945','metadata':'true'},1,1)}">
+	<span th:utext="${infoList.records}"></span>
 <div class="g-headline" th:each="item : ${infoList.records}">
 <div class="blank25"></div>
 <div class="m-tlt">
