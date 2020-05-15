@@ -23,14 +23,14 @@
 <th:block th:with="infoList = ${#InfoData.getInfoList(#{'siteId':site.id,'catId':'1260447400196050945','metadata':'true'},1,1)}">
 
 <div class="g-headline" th:each="item : ${infoList.records}">
-	<span th:utext="${item}"></span>
+
 <div class="blank25"></div>
 <div class="m-tlt">
 <a th:href="${item.url}" th:text="${item.title}" target="_blank">[[${item.title}]]</a>
 </div>
 <div class="blank15"></div>
 
-	<p th:if="${item.resourceSummary!=''}" th:utext="${#strings.abbreviate(item.resourceSummary,93)}">摘要</p>
+	<p th:with="infoObj = ${#InfoData.getInfoById(item.id)}">[[${#strings.abbreviate(infoObj.resourceSummary,93)}]]</p>
 
 <div class="blank29"></div>
 </div>
