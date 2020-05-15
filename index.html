@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,9 +27,9 @@
 <a th:href="${item.url}" th:text="${item.title}" target="_blank">[[${item.title}]]</a>
 </div>
 <div class="blank15"></div>
-	<th:block th:href="${item.url}">
-	<p th:if="${infoObj.resourceSummary!=''}">[[${#strings.abbreviate(infoObj.resourceSummary,93)}]]</p>
-	</th:block>
+
+	<p th:if="${item.resourceSummary!=''}">[[${#strings.abbreviate(item.resourceSummary,93)}]]</p>
+
 <div class="blank29"></div>
 </div>
 </th:block>
@@ -42,7 +42,7 @@
 		<div class="swiper-wrapper">
 			<div class="swiper-slide" th:each="item : ${infoList.records}">
 				<a th:href="${item.url}">
-					<img th:src=[[${item.thumbnail}]] alt="">
+					<img th:src="${item.thumbnail}" alt="">
 				</a>
 				<div class="shadow">
 					<a th:href="${item.url}" th:text="${item.title}">[[${item.title}]]</a>
