@@ -29,30 +29,34 @@
 				<li>
 					&gt;
 				</li>
-				<th:block th:each="cata :${#CataData.getCatalogPosition(site.id,catalog.id)}">
-					<li th:switch = "${cataStat.last} eq false">
-						<a th:case="true" th:href="${cata.linkUrl}">[[${cata.name}]]</a>
-						<a th:case="false">[[${cata.name}]]</a>
-					</li>
-					<li th:if="${cataStat.last} eq false">&gt;</li>
-				</th:block>
+				<li>
+					<a href="/hdjl/ldxx/list.html">互动交流</a>
+				</li>
+				<li>
+					&gt;
+				</li>
+				<li>
+					 领导信箱
+				</li>
 			</ul>
 		</div>
 		<!-- 列表 -->
 		<div class="g-list">
 			<div class="g-lt left">
-				th:block th:with="catalogList = ${#CataData.getCatalogChildrenTree(site.id,catalog.parentId !=0 ? catalog.parentId : catalog.id )}">
 				<div class="m-lt-tnm">
-					[[${parentCatalog.name}]]
+					互动交流
 				</div>
 				<div class="m-lt-list">
 					<ul>
-						<th:block th:each="cataq : ${catalogList}">
-							<li th:id="${'one_'+cataq.id}" th:onclick="setTab([[one_+${cataq.id}]],[[${cataqStat.count}]],[[${cataq.size}]])" th:class="${cataq.id == catalog.id ? 'hover' : ''}"><a th:href="${cataq.linkUrl}"  th:target="${cataq.flagExternal == 1 ? '_blank':'_self'}" th:text="${cataq.name}">[[${cataq.name}]]</a></li>
-						</th:block>
+						<li id="one_1260803321879334913" onclick="setTab(&quot;one_1260803321879334913&quot;,1,null)" class="hover"><a href="/hdjl/ldxx/1.html"  target="_self">领导信箱</a></li>
+
+						<li id="one_1261174684326563842" onclick="setTab(&quot;one_1261174684326563842&quot;,2,null)"><a href="/hdjl/zjtc/1.html"  target="_self">征集调查</a></li>
+
+						<li id="one_1261175040158732289" onclick="setTab(&quot;one_1261175040158732289&quot;,3,null)"><a href="/hdjl/cjwt/1.html"  target="_self">常见问题</a></li>
+
+						<li id="one_1261175112179126273" onclick="setTab(&quot;one_1261175112179126273&quot;,4,null)"><a href="/hdjl/lyfk/1.html"  target="_self">留言反馈</a></li>
 					</ul>
 				</div>
-				</th:block>
 			</div>
 			<div class="g-rt right">
 				<div class="g-news-list">
