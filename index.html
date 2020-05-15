@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<!-- 通用_全站公用META start -->
-	<!--#include virtual='/common/sitemeta.html'-->
-	<!-- 通用_全站公用META end -->
-	<!-- 全站CSSJS start -->
-	<!--#include virtual='/common/cssjs.html'-->
-	<!-- 全站CSSJS end -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- 通用_全站公用META start -->
+<!--#include virtual='/common/sitemeta.html'-->
+<!-- 通用_全站公用META end -->
+<!-- 全站CSSJS start -->
+<!--#include virtual='/common/cssjs.html'-->
+<!-- 全站CSSJS end -->
 
 </head>
 <body>
@@ -18,556 +18,531 @@
 <!-- 头部 end -->
 <!-- 内容 -->
 <div class="g-bd" style="background: #ffffff;">
-	<div class="g-ct">
-		<!-- 头条 -->
-		<div class="g-headline">
-			<div class="blank25"></div>
-			<div class="m-tlt">
-				<a href="#">学习贯彻习近平总书记重要讲话精神 研究安排当前有关工作</a>
-			</div>
-			<div class="blank15"></div>
-			<p>4月8日，省扶贫办召开党组（扩大）会议，传达学习习近平总书记在中央政治局会议审议关于2019年脱贫攻坚成效考核等情况的汇报...</p>
-			<div class="blank29"></div>
-		</div>
-		<!-- 焦点图及新闻栏目 -->
-		<div class="g-1st">
-			<div class="g-1st-lt left">
-				<div class="m-swiper">
-					<div class="swiper-container m-focus" id="swiper1">
-						<div class="swiper-wrapper">
-							<div class="swiper-slide">
-								<a href="#">
-									<img src="images/index.files/pic.png" alt="">
-								</a>
-								<div class="shadow">
-									<a href="#">国务院联防联控机制介绍脱贫攻坚和民政服务工作情况</a>
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<a href="#">
-									<img src="http://img.weinan.gov.cn/HIWCMweinan/202004/202004300810024.jpg" alt="">
-								</a>
-								<div class="shadow">
-									<a href="#">国务院联防联控机制介绍脱贫攻坚和民政服务工作情况</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="swiper-button-prev prev"></div><!--左箭头。如果放置在swiper-container外面，需要自定义样式。-->
-					<div class="swiper-button-next next"></div><!--右箭头。如果放置在swiper-container外面，需要自定义样式。-->
+<div class="g-ct">
+<!-- 头条 -->
+<th:block th:with="infoList = ${#InfoData.getInfoList(#{'siteId':site.id,'catId':'1260447400196050945','metadata':'true'},1,1)}">
+<div class="g-headline" th:each="item : ${infoList.records}">
+<div class="blank25"></div>
+<div class="m-tlt">
+<a th:href="${item.url}" th:text="${item.title}" target="_blank">[[${item.title}]]</a>
+</div>
+<div class="blank15"></div>
+<p>[[${item.resourceSummary}]]</p>
+<div class="blank29"></div>
+</div>
+</th:block>
+<!-- 焦点图及新闻栏目 -->
+<div class="g-1st">
+<div class="g-1st-lt left">
+<th:block th:with="infoList = ${#InfoData.getInfoList(#{'siteId':site.id,'catId':'1260447359377084418','isThumb':'true'},1,5)}">
+<div class="m-swiper">
+	<div class="swiper-container m-focus" id="swiper1">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide" th:each="item : ${infoList.records}">
+				<a th:href="${item.url}">
+					<img src=${item.thumbnail} alt="">
+				</a>
+				<div class="shadow">
+					<a th:href="${item.url}" th:text="${item.title}">[[${item.title}]]</a>
 				</div>
 			</div>
-			<div class="g-1st-rt right">
-				<div class="m-tnm">
-					<a href="#" class="hover" id="one1" onmousemove="setTab('one',1,5)">时政新闻</a>
-					<a href="#" id="one2" onmousemove="setTab('one',2,5)">中省信息</a>
-					<a href="#" id="one3" onmousemove="setTab('one',3,5)">扶贫要闻</a>
-					<a href="#" id="one4" onmousemove="setTab('one',4,5)">基层动态</a>
-					<a href="#" id="one5" onmousemove="setTab('one',5,5)">通知公告</a>
-				</div>
-				<div class="m-list">
-					<div class="blank15"></div>
-					<div id="con_one_1" style="display: block;">
-						<ul>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-							</li>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-							</li>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-							</li>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-							</li>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-							</li>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-							</li>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-							</li>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-							</li>
-						</ul>
-					</div>
-					<div id="con_one_2" style="display: none;">
-						<ul>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-							</li>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-							</li>
-						</ul>
-					</div>
-					<div id="con_one_3" style="display: none;">
-						<ul>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-							</li>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-							</li>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-							</li>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-							</li>
-						</ul>
-					</div>
-					<div id="con_one_4" style="display: none;">
-						<ul>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-							</li>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-							</li>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-							</li>
-						</ul>
-					</div>
-					<div id="con_one_5" style="display: none;">
-						<ul>
-							<li>
-								<span>2020-04-10</span>
-								<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="blank30"></div>
-		<!-- 中间横条 -->
-		<div class="g-ht">
-			<div class="swiper-container m-ht" id="swiper2">
-				<div class="swiper-wrapper">
-					<div class="swiper-slide">
-						<a href="#">
-							<img src="images/index.files/ht2.png" alt="">
-						</a>
-					</div>
-					<div class="swiper-slide">
-						<a href="#">
-							<img src="images/index.files/ht.png" alt="">
-						</a>
-					</div>
-				</div>
-			</div>
-			<div class="swiper-pagination fy"></div> <!--分页器。如果放置在swiper-container外面，需要自定义样式。-->
-		</div>
-		<div class="blank30"></div>
-		<!-- 新闻盒子 -->
-		<div class="g-2nd">
-			<div class="g-lt left">
-				<div class="g-lt-top">
-					<div class="m-tnm">
-						<a href="#" class="hover" id="two1" onmousemove="setTab('two',1,4)">国务院文件</a>
-						<a href="#" id="two2" onmousemove="setTab('two',2,4)">陕西省委文件</a>
-						<a href="#" id="two3" onmousemove="setTab('two',3,4)">渭南市委市文件</a>
-						<a href="#" id="two4" onmousemove="setTab('two',4,4)">脱贫攻坚行业文件</a>
-					</div>
-					<div class="m-list">
-						<div class="blank15"></div>
-						<div id="con_two_1" style="display: block;">
-							<ul>
-								<li>
-									<span>2020-04-10</span>
-									<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-								</li>
-								<li>
-									<span>2020-04-10</span>
-									<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-								</li>
-								<li>
-									<span>2020-04-10</span>
-									<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-								</li>
-								<li>
-									<span>2020-04-10</span>
-									<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-								</li>
-								<li>
-									<span>2020-04-10</span>
-									<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-								</li>
-								<li>
-									<span>2020-04-10</span>
-									<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-								</li>
-							</ul>
-							<a href="#1" class="u-more"></a>
-						</div>
-						<div id="con_two_2" style="display: none;">
-							<ul>
-								<li>
-									<span>2020-04-10</span>
-									<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-								</li>
-								<li>
-									<span>2020-04-10</span>
-									<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-								</li>
-							</ul>
-							<a href="#2" class="u-more"></a>
-						</div>
-						<div id="con_two_3" style="display: none;">
-							<ul>
-								<li>
-									<span>2020-04-10</span>
-									<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-								</li>
-								<li>
-									<span>2020-04-10</span>
-									<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-								</li>
-								<li>
-									<span>2020-04-10</span>
-									<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-								</li>
-								<li>
-									<span>2020-04-10</span>
-									<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-								</li>
-							</ul>
-							<a href="#3" class="u-more"></a>
-						</div>
-						<div id="con_two_4" style="display: none;">
-							<ul>
-								<li>
-									<span>2020-04-10</span>
-									<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-								</li>
-								<li>
-									<span>2020-04-10</span>
-									<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-								</li>
-								<li>
-									<span>2020-04-10</span>
-									<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-								</li>
-							</ul>
-							<a href="#4" class="u-more"></a>
-						</div>
-					</div>
-				</div>
-				<div class="blank8"></div>
-				<div class="g-lt-md">
-					<ul>
-						<li class="zcjd">
-							<a href="#">政策解读</a>
-						</li>
-						<li class="tsbf">
-							<a href="#">图说帮扶</a>
-						</li>
-						<li class="gzyd">
-							<a href="#">工作导引</a>
-						</li>
-					</ul>
-				</div>
-				<div class="blank30"></div>
-				<div class="g-lt-bottom">
-					<div class="m-tnm">
-						<a href="#" class="hover" id="three1" onmousemove="setTab('three',1,2)">理论研究</a>
-						<a href="#" id="three2" onmousemove="setTab('three',2,2)">扶贫典型</a>
-					</div>
-					<div class="m-list">
-						<div class="blank15"></div>
-						<div id="con_three_1" style="display: block;">
-							<ul>
-								<li>
-									<span>2020-04-10</span>
-									<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-								</li>
-								<li>
-									<span>2020-04-10</span>
-									<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-								</li>
-								<li>
-									<span>2020-04-10</span>
-									<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-								</li>
-								<li>
-									<span>2020-04-10</span>
-									<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-								</li>
-								<li>
-									<span>2020-04-10</span>
-									<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-								</li>
-								<li>
-									<span>2020-04-10</span>
-									<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-								</li>
-								<li>
-									<span>2020-04-10</span>
-									<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-								</li>
-							</ul>
-							<a href="#1" class="u-more"></a>
-						</div>
-						<div id="con_three_2" style="display: none;">
-							<ul>
-								<li>
-									<span>2020-04-10</span>
-									<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-								</li>
-								<li>
-									<span>2020-04-10</span>
-									<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-								</li>
-							</ul>
-							<a href="#2" class="u-more"></a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="g-rt right">
-				<!-- 信息公开 -->
-				<div class="g-xxgk">
-					<div class="m-xxgk">
-						<a href="#">信息公开</a>
-					</div>
-					<div class="m-xxgk-list">
-						<div class="m-fpbjg">
-							<a href="#">
-								<img src="images/index.files/fpbjg.png">
-							</a>
-						</div>
-						<div class="m-xxml">
-							<ul>
-								<li>
-									<a href="#">信息公开目录</a>
-								</li>
-								<li>
-									<a href="#">信息公开指南</a>
-								</li>
-								<li>
-									<a href="#">信息公开年报</a>
-								</li>
-								<li>
-									<a href="#">信息公开制度</a>
-								</li>
-								<li>
-									<a href="#">依申请公开</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="blank15"></div>
-				<!-- 领导信箱 -->
-				<div class="g-ldxx">
-					<a href="#">
-						<img src="images/index.files/ldxx.png">
-					</a>
-				</div>
-				<div class="blank30"></div>
-				<!-- 扶贫视频 -->
-				<div class="g-fpsp">
-					<div class="m-tnm">
-						<a href="#" class="hover">扶贫视频</a>
-					</div>
-					<div class="blank30"></div>
-					<div class="m-fpsp">
-						<a href="#1" class="u-more"></a>
-						<div class="swiper-container m-focus" id="swiper3">
-							<div class="swiper-wrapper">
-								<div class="swiper-slide">
-									<a href="#">
-										<img src="images/index.files/fpsp.png">
-									</a>
-									<div class="shadow">
-										<a href="#">扶贫路上的初心</a>
-									</div>
-								</div>
-								<div class="swiper-slide">
-									<a href="#">
-										<img src="images/index.files/fpsp.png">
-									</a>
-									<div class="shadow">
-										<a href="#">扶贫路上的初心</a>
-									</div>
-								</div>
-								<div class="swiper-slide">
-									<a href="#">
-										<img src="images/index.files/fpsp.png">
-									</a>
-									<div class="shadow">
-										<a href="#">扶贫路上的初心</a>
-									</div>
-								</div>
-								<div class="swiper-slide">
-									<a href="#">
-										<img src="images/index.files/fpsp.png">
-									</a>
-									<div class="shadow">
-										<a href="#">扶贫路上的初心</a>
-									</div>
-								</div>
 
-							</div>
-						</div>
-						<div class="swiper-pagination fy3"></div> <!--分页器。如果放置在swiper-container外面，需要自定义样式。-->
-					</div>
-				</div>
-			</div>
 		</div>
-		<div class="blank25"></div>
 	</div>
-	<!-- 专题专栏 -->
-	<div class="g-ztzl">
-		<div class="swiper-container m-zt" id="swiper4">
+	<div class="swiper-button-prev prev"></div><!--左箭头。如果放置在swiper-container外面，需要自定义样式。-->
+	<div class="swiper-button-next next"></div><!--右箭头。如果放置在swiper-container外面，需要自定义样式。-->
+</div>
+</th:block>
+</div>
+<div class="g-1st-rt right">
+<div class="m-tnm">
+	<a href="/xwzx/szxw/list.html" class="hover" id="one1" onmousemove="setTab('one',1,5)">时政新闻</a>
+	<a href="/xwzx/zsxx/1.html" id="one2" onmousemove="setTab('one',2,5)">中省信息</a>
+	<a href="/xwzx/fpyw/djctp/list.html" id="one3" onmousemove="setTab('one',3,5)">扶贫要闻</a>
+	<a href="/xwzx/jcdt/1.html" id="one4" onmousemove="setTab('one',4,5)">基层动态</a>
+	<a href="/xwzx/tzgg/1.html" id="one5" onmousemove="setTab('one',5,5)">通知公告</a>
+</div>
+<div class="m-list">
+	<div class="blank15"></div>
+	<div id="con_one_1" style="display: block;">
+		<ul>
+			<th:block th:with="infoList = ${#InfoData.getInfoList(#{'siteId':site.id,'catId':'1260447400196050945','orderby','st.resource_publication_date'},1,8)}">
+				<ul>
+					<li th:each="item : ${infoList.records}">
+													<span th:text="${#dates.format(item.resourcePublicationDate,'yyyy-MM-dd')}">
+													[[${#dates.format(item.resourcePublicationDate,'yyyy-MM-dd')}]]
+													</span>
+						<a target="_blank" th:href="${item.url}" th:text="${item.title}">[[${item.title}]]</a>
+					</li>
+				</ul>
+			</th:block>
+		</ul>
+	</div>
+	<div id="con_one_2" style="display: none;">
+		<ul>
+			<th:block th:with="infoList = ${#InfoData.getInfoList(#{'siteId':site.id,'catId':'1260447442017456130','orderby','st.resource_publication_date'},1,8)}">
+				<ul>
+					<li th:each="item : ${infoList.records}">
+													<span th:text="${#dates.format(item.resourcePublicationDate,'yyyy-MM-dd')}">
+													[[${#dates.format(item.resourcePublicationDate,'yyyy-MM-dd')}]]
+													</span>
+						<a target="_blank" th:href="${item.url}" th:text="${item.title}">[[${item.title}]]</a>
+					</li>
+				</ul>
+			</th:block>
+		</ul>
+	</div>
+	<div id="con_one_3" style="display: none;">
+		<ul>
+			<th:block th:with="infoList = ${#InfoData.getInfoList(#{'siteId':site.id,'catId':'1260447505976397825','orderby','st.resource_publication_date'},1,8)}">
+				<ul>
+					<li th:each="item : ${infoList.records}">
+													<span th:text="${#dates.format(item.resourcePublicationDate,'yyyy-MM-dd')}">
+													[[${#dates.format(item.resourcePublicationDate,'yyyy-MM-dd')}]]
+													</span>
+						<a target="_blank" th:href="${item.url}" th:text="${item.title}">[[${item.title}]]</a>
+					</li>
+				</ul>
+			</th:block>
+		</ul>
+	</div>
+	<div id="con_one_4" style="display: none;">
+		<ul>
+			<th:block th:with="infoList = ${#InfoData.getInfoList(#{'siteId':site.id,'catId':'1260448102024744962','orderby','st.resource_publication_date'},1,8)}">
+				<ul>
+					<li th:each="item : ${infoList.records}">
+													<span th:text="${#dates.format(item.resourcePublicationDate,'yyyy-MM-dd')}">
+													[[${#dates.format(item.resourcePublicationDate,'yyyy-MM-dd')}]]
+													</span>
+						<a target="_blank" th:href="${item.url}" th:text="${item.title}">[[${item.title}]]</a>
+					</li>
+				</ul>
+			</th:block>
+		</ul>
+	</div>
+	<div id="con_one_5" style="display: none;">
+		<ul>
+			<th:block th:with="infoList = ${#InfoData.getInfoList(#{'siteId':site.id,'catId':'1260448156710080513','orderby','st.resource_publication_date'},1,8)}">
+				<ul>
+					<li th:each="item : ${infoList.records}">
+													<span th:text="${#dates.format(item.resourcePublicationDate,'yyyy-MM-dd')}">
+													[[${#dates.format(item.resourcePublicationDate,'yyyy-MM-dd')}]]
+													</span>
+						<a target="_blank" th:href="${item.url}" th:text="${item.title}">[[${item.title}]]</a>
+					</li>
+				</ul>
+			</th:block>
+		</ul>
+	</div>
+</div>
+</div>
+</div>
+<div class="blank30"></div>
+<!-- 中间横条 -->
+<div class="g-ht">
+<div class="swiper-container m-ht" id="swiper2">
+<div class="swiper-wrapper">
+	<div class="swiper-slide">
+		<a href="#">
+			<img src="images/index.files/ht2.png" alt="">
+		</a>
+	</div>
+	<div class="swiper-slide">
+		<a href="#">
+			<img src="images/index.files/ht.png" alt="">
+		</a>
+	</div>
+</div>
+</div>
+<div class="swiper-pagination fy"></div> <!--分页器。如果放置在swiper-container外面，需要自定义样式。-->
+</div>
+<div class="blank30"></div>
+<!-- 新闻盒子 -->
+<div class="g-2nd">
+<div class="g-lt left">
+<div class="g-lt-top">
+	<div class="m-tnm">
+		<a href="#" class="hover" id="two1" onmousemove="setTab('two',1,4)">国务院文件</a>
+		<a href="#" id="two2" onmousemove="setTab('two',2,4)">陕西省委文件</a>
+		<a href="#" id="two3" onmousemove="setTab('two',3,4)">渭南市委市文件</a>
+		<a href="#" id="two4" onmousemove="setTab('two',4,4)">脱贫攻坚行业文件</a>
+	</div>
+	<div class="m-list">
+		<div class="blank15"></div>
+		<div id="con_two_1" style="display: block;">
+			<ul>
+				<li>
+					<span>2020-04-10</span>
+					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
+				</li>
+				<li>
+					<span>2020-04-10</span>
+					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
+				</li>
+				<li>
+					<span>2020-04-10</span>
+					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
+				</li>
+				<li>
+					<span>2020-04-10</span>
+					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
+				</li>
+				<li>
+					<span>2020-04-10</span>
+					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
+				</li>
+				<li>
+					<span>2020-04-10</span>
+					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
+				</li>
+			</ul>
+			<a href="#1" class="u-more"></a>
+		</div>
+		<div id="con_two_2" style="display: none;">
+			<ul>
+				<li>
+					<span>2020-04-10</span>
+					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
+				</li>
+				<li>
+					<span>2020-04-10</span>
+					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
+				</li>
+			</ul>
+			<a href="#2" class="u-more"></a>
+		</div>
+		<div id="con_two_3" style="display: none;">
+			<ul>
+				<li>
+					<span>2020-04-10</span>
+					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
+				</li>
+				<li>
+					<span>2020-04-10</span>
+					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
+				</li>
+				<li>
+					<span>2020-04-10</span>
+					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
+				</li>
+				<li>
+					<span>2020-04-10</span>
+					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
+				</li>
+			</ul>
+			<a href="#3" class="u-more"></a>
+		</div>
+		<div id="con_two_4" style="display: none;">
+			<ul>
+				<li>
+					<span>2020-04-10</span>
+					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
+				</li>
+				<li>
+					<span>2020-04-10</span>
+					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
+				</li>
+				<li>
+					<span>2020-04-10</span>
+					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
+				</li>
+			</ul>
+			<a href="#4" class="u-more"></a>
+		</div>
+	</div>
+</div>
+<div class="blank8"></div>
+<div class="g-lt-md">
+	<ul>
+		<li class="zcjd">
+			<a href="#">政策解读</a>
+		</li>
+		<li class="tsbf">
+			<a href="#">图说帮扶</a>
+		</li>
+		<li class="gzyd">
+			<a href="#">工作导引</a>
+		</li>
+	</ul>
+</div>
+<div class="blank30"></div>
+<div class="g-lt-bottom">
+	<div class="m-tnm">
+		<a href="#" class="hover" id="three1" onmousemove="setTab('three',1,2)">理论研究</a>
+		<a href="#" id="three2" onmousemove="setTab('three',2,2)">扶贫典型</a>
+	</div>
+	<div class="m-list">
+		<div class="blank15"></div>
+		<div id="con_three_1" style="display: block;">
+			<ul>
+				<li>
+					<span>2020-04-10</span>
+					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
+				</li>
+				<li>
+					<span>2020-04-10</span>
+					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
+				</li>
+				<li>
+					<span>2020-04-10</span>
+					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
+				</li>
+				<li>
+					<span>2020-04-10</span>
+					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
+				</li>
+				<li>
+					<span>2020-04-10</span>
+					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
+				</li>
+				<li>
+					<span>2020-04-10</span>
+					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
+				</li>
+				<li>
+					<span>2020-04-10</span>
+					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
+				</li>
+			</ul>
+			<a href="#1" class="u-more"></a>
+		</div>
+		<div id="con_three_2" style="display: none;">
+			<ul>
+				<li>
+					<span>2020-04-10</span>
+					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
+				</li>
+				<li>
+					<span>2020-04-10</span>
+					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
+				</li>
+			</ul>
+			<a href="#2" class="u-more"></a>
+		</div>
+	</div>
+</div>
+</div>
+<div class="g-rt right">
+<!-- 信息公开 -->
+<div class="g-xxgk">
+	<div class="m-xxgk">
+		<a href="#">信息公开</a>
+	</div>
+	<div class="m-xxgk-list">
+		<div class="m-fpbjg">
+			<a href="#">
+				<img src="images/index.files/fpbjg.png">
+			</a>
+		</div>
+		<div class="m-xxml">
+			<ul>
+				<li>
+					<a href="#">信息公开目录</a>
+				</li>
+				<li>
+					<a href="#">信息公开指南</a>
+				</li>
+				<li>
+					<a href="#">信息公开年报</a>
+				</li>
+				<li>
+					<a href="#">信息公开制度</a>
+				</li>
+				<li>
+					<a href="#">依申请公开</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="blank15"></div>
+<!-- 领导信箱 -->
+<div class="g-ldxx">
+	<a href="#">
+		<img src="images/index.files/ldxx.png">
+	</a>
+</div>
+<div class="blank30"></div>
+<!-- 扶贫视频 -->
+<div class="g-fpsp">
+	<div class="m-tnm">
+		<a href="#" class="hover">扶贫视频</a>
+	</div>
+	<div class="blank30"></div>
+	<div class="m-fpsp">
+		<a href="#1" class="u-more"></a>
+		<div class="swiper-container m-focus" id="swiper3">
 			<div class="swiper-wrapper">
 				<div class="swiper-slide">
 					<a href="#">
-						<img src="images/index.files/tpgj.png">
+						<img src="images/index.files/fpsp.png">
 					</a>
+					<div class="shadow">
+						<a href="#">扶贫路上的初心</a>
+					</div>
 				</div>
 				<div class="swiper-slide">
 					<a href="#">
-						<img src="images/index.files/brcc.png">
+						<img src="images/index.files/fpsp.png">
 					</a>
+					<div class="shadow">
+						<a href="#">扶贫路上的初心</a>
+					</div>
 				</div>
+				<div class="swiper-slide">
+					<a href="#">
+						<img src="images/index.files/fpsp.png">
+					</a>
+					<div class="shadow">
+						<a href="#">扶贫路上的初心</a>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<a href="#">
+						<img src="images/index.files/fpsp.png">
+					</a>
+					<div class="shadow">
+						<a href="#">扶贫路上的初心</a>
+					</div>
+				</div>
+
 			</div>
 		</div>
+		<div class="swiper-pagination fy3"></div> <!--分页器。如果放置在swiper-container外面，需要自定义样式。-->
 	</div>
-	<div class="blank39"></div>
+</div>
+</div>
+</div>
+<div class="blank25"></div>
+</div>
+<!-- 专题专栏 -->
+<div class="g-ztzl">
+<div class="swiper-container m-zt" id="swiper4">
+<div class="swiper-wrapper">
+<div class="swiper-slide">
+	<a href="#">
+		<img src="images/index.files/tpgj.png">
+	</a>
+</div>
+<div class="swiper-slide">
+	<a href="#">
+		<img src="images/index.files/brcc.png">
+	</a>
+</div>
+</div>
+</div>
+</div>
+<div class="blank39"></div>
 </div>
 
 
 <script>
-	var mySwiper1 = new Swiper ('#swiper1', {
-		effect : 'slide',
-		loop: true, // 循环模式选项
-		speed:300,
-		autoplay : {
-			delay: 9000,
-			disableOnInteraction: false,//用户操作swiper之后，是否禁止autoplay。
-		},
-		navigation: {
-			nextEl: '.prev',
-			prevEl: '.next',
-		},
-	})
-	$('.m-swiper').mouseover(function(){
-		mySwiper1.navigation.$nextEl.css('display','block');
-		mySwiper1.navigation.$prevEl.css('display','block');
-	})
-	$('.m-swiper').mouseout(function(){
-		mySwiper1.navigation.$nextEl.css('display','none');
-		mySwiper1.navigation.$prevEl.css('display','none');
-	})
+var mySwiper1 = new Swiper ('#swiper1', {
+effect : 'slide',
+loop: true, // 循环模式选项
+speed:300,
+autoplay : {
+delay: 9000,
+disableOnInteraction: false,//用户操作swiper之后，是否禁止autoplay。
+},
+navigation: {
+nextEl: '.prev',
+prevEl: '.next',
+},
+})
+$('.m-swiper').mouseover(function(){
+mySwiper1.navigation.$nextEl.css('display','block');
+mySwiper1.navigation.$prevEl.css('display','block');
+})
+$('.m-swiper').mouseout(function(){
+mySwiper1.navigation.$nextEl.css('display','none');
+mySwiper1.navigation.$prevEl.css('display','none');
+})
 
-	//鼠标覆盖停止自动切换
-	mySwiper1.el.onmouseover = function(){
-		mySwiper1.autoplay.stop();
+//鼠标覆盖停止自动切换
+mySwiper1.el.onmouseover = function(){
+mySwiper1.autoplay.stop();
 
-	}
-	//鼠标离开开始自动切换
-	mySwiper1.el.onmouseout = function(){
-		mySwiper1.autoplay.start();
-	}
+}
+//鼠标离开开始自动切换
+mySwiper1.el.onmouseout = function(){
+mySwiper1.autoplay.start();
+}
 
-	// 横条
-	// var mySwiper2 = new Swiper ('#swiper2', {
-	//     effect : 'fade',
-	//     loop: true, // 循环模式选项
-	//     speed:300,
-	//     autoplay : {
-	//         delay: 8000,
-	//         disableOnInteraction: false,//用户操作swiper之后，是否禁止autoplay。
-	//     },
-	//     pagination: {
-	//         el: '.fy',
-	//         clickable :true,
-	//         renderBullet: function (index, className) {
-	//           return '<span class="' + className + '">' + (index + 1) + '</span>';
-	//         },
-	//     },
-	// })
-	// //鼠标滑过pagination控制swiper切换
-	// for(i=0;i<mySwiper2.pagination.bullets.length;i++){
-	//   mySwiper2.pagination.bullets[i].onmouseover=function(){
-	//     this.click();
-	//   };
-	// }
-	// //鼠标覆盖停止自动切换
-	// mySwiper2.el.onmouseover = function(){
-	//     mySwiper2.autoplay.stop();
-	// }
-	// //鼠标离开开始自动切换
-	// mySwiper2.el.onmouseout = function(){
-	//     mySwiper2.autoplay.start();
-	// }
-	//
-	//
+// 横条
+// var mySwiper2 = new Swiper ('#swiper2', {
+//     effect : 'fade',
+//     loop: true, // 循环模式选项
+//     speed:300,
+//     autoplay : {
+//         delay: 8000,
+//         disableOnInteraction: false,//用户操作swiper之后，是否禁止autoplay。
+//     },
+//     pagination: {
+//         el: '.fy',
+//         clickable :true,
+//         renderBullet: function (index, className) {
+//           return '<span class="' + className + '">' + (index + 1) + '</span>';
+//         },
+//     },
+// })
+// //鼠标滑过pagination控制swiper切换
+// for(i=0;i<mySwiper2.pagination.bullets.length;i++){
+//   mySwiper2.pagination.bullets[i].onmouseover=function(){
+//     this.click();
+//   };
+// }
+// //鼠标覆盖停止自动切换
+// mySwiper2.el.onmouseover = function(){
+//     mySwiper2.autoplay.stop();
+// }
+// //鼠标离开开始自动切换
+// mySwiper2.el.onmouseout = function(){
+//     mySwiper2.autoplay.start();
+// }
+//
+//
 
-	var mySwiper3 = new Swiper ('#swiper3', {
-		effect : 'fade',
-		loop: true, // 循环模式选项
-		speed:300,
-		autoplay : {
-			delay: 6000,
-			disableOnInteraction: false,//用户操作swiper之后，是否禁止autoplay。
-		},
-		pagination: {
-			el: '.fy3',
-			clickable :true,
-		},
-	})
-	//鼠标覆盖停止自动切换
-	mySwiper3.el.onmouseover = function(){
-		mySwiper3.autoplay.stop();
-	}
-	//鼠标离开开始自动切换
-	mySwiper3.el.onmouseout = function(){
-		mySwiper3.autoplay.start();
-	}
+var mySwiper3 = new Swiper ('#swiper3', {
+effect : 'fade',
+loop: true, // 循环模式选项
+speed:300,
+autoplay : {
+delay: 6000,
+disableOnInteraction: false,//用户操作swiper之后，是否禁止autoplay。
+},
+pagination: {
+el: '.fy3',
+clickable :true,
+},
+})
+//鼠标覆盖停止自动切换
+mySwiper3.el.onmouseover = function(){
+mySwiper3.autoplay.stop();
+}
+//鼠标离开开始自动切换
+mySwiper3.el.onmouseout = function(){
+mySwiper3.autoplay.start();
+}
 
-	// 专题专栏
-	var mySwiper4 = new Swiper ('#swiper4', {
-		loop: true, // 循环模式选项
-		speed:300,
-		slidesPerView : 2,
-		autoplay : {
-			delay: 3000,
-			disableOnInteraction: false,//用户操作swiper之后，是否禁止autoplay。
-		},
-	})
-	//鼠标覆盖停止自动切换
-	mySwiper4.el.onmouseover = function(){
-		mySwiper4.autoplay.stop();
-	}
-	//鼠标离开开始自动切换
-	mySwiper4.el.onmouseout = function(){
-		mySwiper4.autoplay.start();
-	}
+// 专题专栏
+var mySwiper4 = new Swiper ('#swiper4', {
+loop: true, // 循环模式选项
+speed:300,
+slidesPerView : 2,
+autoplay : {
+delay: 3000,
+disableOnInteraction: false,//用户操作swiper之后，是否禁止autoplay。
+},
+})
+//鼠标覆盖停止自动切换
+mySwiper4.el.onmouseover = function(){
+mySwiper4.autoplay.stop();
+}
+//鼠标离开开始自动切换
+mySwiper4.el.onmouseout = function(){
+mySwiper4.autoplay.start();
+}
 </script>
 
 <!-- 版权 -->
