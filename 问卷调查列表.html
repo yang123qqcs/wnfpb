@@ -63,7 +63,7 @@
 						[[${catalog.name}]]
 					</div>
 				</div>
-				<th:block th:with="surveyList = ${#SurveyData.getSurveyList(#{'siteId':site.id,'catId':catalog.id},pageNo,1)}">
+				<th:block th:with="surveyList = ${#SurveyData.getSurveyList(#{'siteId':site.id,'catId':catalog.id},pageNo,15)}">
 					<div class="diaochalist">
 						<ul>
 							<li class="on" th:each="item : ${surveyList.records}"><span>[调查时间：[[${#dates.format(item.startTime,'yyyy-MM-dd')}]]～[[${#dates.format(item.endTime,'yyyy-MM-dd')}]]]]</span><a target="_blank" th:href="${item.url}" th:text="${item.title}">[[${item.title}]]</a></li>
