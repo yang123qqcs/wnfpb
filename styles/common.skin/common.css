@@ -474,5 +474,6 @@ input[type=url], input[type=week], select, textarea {
 .hblist .hbxlist li span{float:right;color: #afafaf;font-size: 14px;}
 .hblist .hbxlist ul {overflow:hidden;margin: 0;padding-top: 13px;}
 /*互动列表*/
+.sort_num_div{ float: left;}
 
 
