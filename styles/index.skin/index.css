@@ -408,3 +408,13 @@
 	padding: 0 12px;
 	box-sizing: border-box;
 }
+
+/*调查*/
+.diaochalist {padding: 0;height: auto;overflow: hidden;}
+.diaochalist li {height: 62px;line-height: 62px;border-bottom: 1px dashed #CCCCCC;}
+.diaochalist li { background:0 none;text-indent:70px;}
+.diaochalist li a {color:#000000;font-size:16px;}
+.diaochalist li span {float:right;color: #777777;padding-right: 8px;font-size: 15px;}
+.diaochalist li.on { background:url(../../images/index.files/jxz.png) left center no-repeat;}
+.diaochalist li.off { background:url(../../images/index.files/yjs.png) left center no-repeat;}
+/*调查*/
