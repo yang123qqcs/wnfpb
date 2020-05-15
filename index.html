@@ -28,7 +28,7 @@
 </div>
 <div class="blank15"></div>
 
-	<p th:if="${item.resourceSummary!=''}">[[${#strings.abbreviate(item.resourceSummary,93)}]]</p>
+	<p th:if="${item.resourceSummary!=''}" th:utext="${#strings.abbreviate(item.resourceSummary,93)}">摘要</p>
 
 <div class="blank29"></div>
 </div>
