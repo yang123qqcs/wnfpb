@@ -40,7 +40,7 @@
 		<div class="swiper-wrapper">
 			<div class="swiper-slide" th:each="item : ${infoList.records}">
 				<a th:href="${item.url}">
-					<img src=${item.thumbnail} alt="">
+					<img src=[[${item.thumbnail}]] alt="">
 				</a>
 				<div class="shadow">
 					<a th:href="${item.url}" th:text="${item.title}">[[${item.title}]]</a>
