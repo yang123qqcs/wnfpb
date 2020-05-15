@@ -27,7 +27,7 @@
 <a th:href="${item.url}" th:text="${item.title}" target="_blank">[[${item.title}]]</a>
 </div>
 <div class="blank15"></div>
-<p>[[${item.resourceSummary}]]</p>
+	<p th:if="${infoObj.resourceSummary!=''}">[[${#strings.abbreviate(infoObj.resourceSummary,93)}]]</p>
 <div class="blank29"></div>
 </div>
 </th:block>
