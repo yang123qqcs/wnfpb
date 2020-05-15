@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<!-- 通用_全站公用META start -->
+<!--#include virtual='/common/sitemeta.html'-->
+<!-- 通用_全站公用META end -->
+<!-- 列表页meate start -->
+<!--#include virtual='/common/listmeate.html'-->
+<!-- 列表页meate end -->
+<!-- 全站CSSJS start -->
+<!--#include virtual='/common/cssjs.html'-->
+<!-- 全站CSSJS end -->
+</head>
+<body>
+<!-- 头部 -->
+<!-- 头部 start -->
+<!--#include virtual='/common/header.html'-->
+<!-- 头部 end -->
+<!-- 通用列表 -->
+<div class="g-bd g-list-bd">
+	<!-- 列表页当前位置 -->
+	<div class="m-local">
+		<ul>
+			<li>当前位置：</li>
+			<li>
+				<a href="/">首页</a>
+			</li>
+			<li>
+				&gt;
+			</li>
+			<th:block th:each="cata :${#CataData.getCatalogPosition(site.id,catalog.id)}">
+				<li th:switch = "${cataStat.last} eq false">
+					<a th:case="true" th:href="${cata.linkUrl}">[[${cata.name}]]</a>
+					<a th:case="false">[[${cata.name}]]</a>
+				</li>
+				<li th:if="${cataStat.last} eq false">&gt;</li>
+			</th:block>
+		</ul>
+	</div>
+	<!-- 列表 -->
+	<div class="g-list">
+		<div class="g-lt left">
+			<th:block th:with="catalogList = ${#CataData.getCatalogChildrenTree(site.id,catalog.parentId !=0 ? catalog.parentId : catalog.id )}">
+			<div class="m-lt-tnm">
+				[[${parentCatalog.name}]]
+			</div>
+			<div class="m-lt-list">
+				<ul>
+					<th:block th:each="cataq : ${catalogList}">
+						<li th:id="${'one_'+cataq.id}" th:onclick="setTab([[one_+${cataq.id}]],[[${cataqStat.count}]],[[${cataq.size}]])" th:class="${cataq.id == catalog.id ? 'hover' : ''}"><a th:href="${cataq.linkUrl}"  th:target="${cataq.flagExternal == 1 ? '_blank':'_self'}" th:text="${cataq.name}">[[${cataq.name}]]</a></li>
+					</th:block>
+				</ul>
+			</div>
+			</th:block>
+		</div>
+
+		<div class="g-rt right">
+			<div class="g-news-list">
+				<div class="blank22"></div>
+				<div class="m-tlt">
+					<div class="u-nm">
+						[[${catalog.name}]]
+					</div>
+				</div>
+				<th:block th:with="surveyList = ${#SurveyData.getSurveyList(#{'siteId':site.id,'catId':catalog.id},pageNo,1)}">
+					<div class="diaochalist">
+						<ul>
+							<li class="on" th:each="item : ${surveyList.records}"><span>[调查时间：[[${#dates.format(item.startTime,'yyyy-MM-dd')}]]～[[${#dates.format(item.endTime,'yyyy-MM-dd')}]]]]</span><a target="_blank" th:href="${item.url}" th:text="${item.title}">[[${item.title}]]</a></li>
+						</ul>
+					</div>
+				<!--翻页-->
+				<div class="m-lst-pg">
+					<span><a th:href="${surveyList.firstPageUrl}">首页</a></span>
+					<span><a th:href="${surveyList.prePageUrl}">上一页</a></span>
+					<span><a th:href="${surveyList.nextPageUrl}">下一页</a></span>
+					<span><a th:href="${surveyList.endPageUrl}">末页</a></span>
+					<span th:text="'共'+${surveyList.total}+'条记录'">共110条记录</span>
+					<span th:text="'共'+${surveyList.pages}+'页'">共10页</span>
+					<span>跳转到 <select onChange="location.href=this.options[this.selectedIndex].value;">
+						<option th:each="p,status : ${surveyList.pageList}" th:value="${p}" th:selected="${status.index+1} == ${surveyList.current}" th:text="${status.index+1}">[[${status.index+1}]]</option>
+					</select>页 </span>
+				</div>
+				</th:block>
+				<!--翻页end-->
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 版权 -->
+<!-- 尾部及友情链接 start -->
+<!--#include virtual='/common/footer.html'-->
+<!-- 尾部及友情链接 end -->
+</body>
+</html>
