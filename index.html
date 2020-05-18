@@ -30,7 +30,7 @@
 </div>
 <div class="blank15"></div>
 
-	<p th:with="infoObj = ${#InfoData.getInfoById(item.id)}">[[${#strings.abbreviate(infoObj.resourceSummary,93)}]]</p>
+	<p th:text="${item.resourceSummary}">[[${item.resourceSummary}]]</p>
 
 <div class="blank29"></div>
 </div>
