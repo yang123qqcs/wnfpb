@@ -4,26 +4,30 @@
 				<div class="blank20"></div>
 				<!-- 友情链接 -->
 				<div class="m-link">
+					<th:block th:with="infoList = ${#InfoData.getInfoList(#{'siteId':site.id,'catId':'1262280144148500481','orderby','st.resource_publication_date'},1,50)}">
 	                <select onchange="if(this.value != '') {window.open(this.value);this.options[0].selected=true;}">
 	                    <option value="">中央政府门户网站</option>
-	                    <option value="http://www.mof.gov.cn/">中华人民共和国财政部</option>
-	                    <option value="http://www.mohurd.gov.cn/">中华人民共和国建设部</option>
+	                    <option th:each="item : ${infoList.records}" th:value="${item.url}">[[${item.title}]]</option>
 	                </select>
+					</th:block>
+					<th:block th:with="infoList = ${#InfoData.getInfoList(#{'siteId':site.id,'catId':'1262280200662552578','orderby','st.resource_publication_date'},1,50)}">
 	                <select onchange="if(this.value != '') {window.open(this.value);this.options[0].selected=true;}">
 	                    <option value="">陕西省政府门户网站</option>
-	                    <option value="http://www.shangqiu.gov.cn/">商丘市人民政府</option>
+						<option th:each="item : ${infoList.records}" th:value="${item.url}">[[${item.title}]]</option>
 	                </select>
+					</th:block>
+					<th:block th:with="infoList = ${#InfoData.getInfoList(#{'siteId':site.id,'catId':'1262280256564236289','orderby','st.resource_publication_date'},1,50)}">
 	                <select onchange="if(this.value != '') {window.open(this.value);this.options[0].selected=true;}">
 	                    <option value="">各地扶贫办</option>
-	                    <option value="http://www.lygjj.org.cn/">洛阳市住房公积金管理中心</option>
-	                    <option value="http://www.jzgjj.gov.cn/">焦作市住房公积金管理中心</option>
-	                    <option value="http://www.zzgjj.com/">郑州市住房公积金管理中心</option>
+						<option th:each="item : ${infoList.records}" th:value="${item.url}">[[${item.title}]]</option>
 	                </select>
+					</th:block>
+					<th:block th:with="infoList = ${#InfoData.getInfoList(#{'siteId':site.id,'catId':'1262280310964359170','orderby','st.resource_publication_date'},1,50)}">
 	                <select onchange="if(this.value != '') {window.open(this.value);this.options[0].selected=true;}">
 	                    <option value="">新闻媒体</option>
-	                    <option value="http://www.mof.gov.cn/">中华人民共和国财政部</option>
-	                    <option value="http://www.mohurd.gov.cn/">中华人民共和国建设部</option>
+						<option th:each="item : ${infoList.records}" th:value="${item.url}">[[${item.title}]]</option>
 	                </select>
+					</th:block>
 	            </div>
 	            <div class="blank27"></div>
 	            <!-- 党政机关 -->
