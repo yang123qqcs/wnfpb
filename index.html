@@ -344,24 +344,20 @@
 </div>
 <!-- 专题专栏 -->
 <div class="g-ztzl">
-<div class="swiper-container m-zt" id="swiper4">
-<div class="swiper-wrapper">
-<div class="swiper-slide">
-	<a href="#">
-		<img src="images/index.files/tpgj.png">
-	</a>
-</div>
-<div class="swiper-slide">
-	<a href="#">
-		<img src="images/index.files/brcc.png">
-	</a>
-</div>
-</div>
-</div>
+	<th:block th:with="infoList = ${#InfoData.getInfoList(#{'siteId':site.id,'catId':'1262213934295814146','isThumb':'true'},1,2)}">
+	<div class="swiper-container m-zt" id="swiper4">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide" th:each="item : ${infoList.records}">
+				<a th:href="${item.url}">
+					<img th:src="${item.thumbnail}" alt="">
+				</a>
+			</div>
+		</div>
+	</div>
+	</th:block>
 </div>
 <div class="blank39"></div>
 </div>
-
 
 <script>
 var mySwiper1 = new Swiper ('#swiper1', {
