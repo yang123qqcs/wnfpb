@@ -142,6 +142,7 @@ a{
 	padding: 0 30px;
 	background: #ffffff;
 	overflow: hidden;
+	min-height: 500px;
 }
 .g-news-list .m-tlt{
 	height: 44px;
