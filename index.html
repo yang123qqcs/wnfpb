@@ -166,92 +166,60 @@
 <div class="g-lt left">
 <div class="g-lt-top">
 	<div class="m-tnm">
-		<a href="#" class="hover" id="two1" onmousemove="setTab('two',1,4)">国务院文件</a>
-		<a href="#" id="two2" onmousemove="setTab('two',2,4)">陕西省委文件</a>
-		<a href="#" id="two3" onmousemove="setTab('two',3,4)">渭南市委市文件</a>
-		<a href="#" id="two4" onmousemove="setTab('two',4,4)">脱贫攻坚行业文件</a>
+		<a href="/zcfg/dzygwywj/list.html" class="hover" id="two1" onmousemove="setTab('two',1,4)">国务院文件</a>
+		<a href="/zcfg/sxswzfwj/list.html" id="two2" onmousemove="setTab('two',2,4)">陕西省委文件</a>
+		<a href="/zcfg/wnswszfwj/list.html" id="two3" onmousemove="setTab('two',3,4)">渭南市委市文件</a>
+		<a href="/zcfg/tpgjhybmwj/list.html" id="two4" onmousemove="setTab('two',4,4)">脱贫攻坚行业文件</a>
 	</div>
 	<div class="m-list">
 		<div class="blank15"></div>
 		<div id="con_two_1" style="display: block;">
-			<ul>
-				<li>
-					<span>2020-04-10</span>
-					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-				</li>
-				<li>
-					<span>2020-04-10</span>
-					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-				</li>
-				<li>
-					<span>2020-04-10</span>
-					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-				</li>
-				<li>
-					<span>2020-04-10</span>
-					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-				</li>
-				<li>
-					<span>2020-04-10</span>
-					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-				</li>
-				<li>
-					<span>2020-04-10</span>
-					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-				</li>
-			</ul>
-			<a href="#1" class="u-more"></a>
+			<th:block th:with="infoList = ${#InfoData.getInfoList(#{'siteId':site.id,'catId':'1260448292840411137','orderby','st.resource_publication_date'},1,6)}">
+				<ul>
+					<li th:each="item : ${infoList.records}">
+													<span th:text="${#dates.format(item.resourcePublicationDate,'yyyy-MM-dd')}">
+													[[${#dates.format(item.resourcePublicationDate,'yyyy-MM-dd')}]]
+													</span>
+						<a target="_blank" th:href="${item.url}" th:text="${item.title}">[[${item.title}]]</a>
+					</li>
+				</ul>
+			<a href="/zcfg/dzygwywj/list.html" class="u-more"></a>
 		</div>
 		<div id="con_two_2" style="display: none;">
-			<ul>
-				<li>
-					<span>2020-04-10</span>
-					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-				</li>
-				<li>
-					<span>2020-04-10</span>
-					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-				</li>
-			</ul>
-			<a href="#2" class="u-more"></a>
+			<th:block th:with="infoList = ${#InfoData.getInfoList(#{'siteId':site.id,'catId':'1260448372762873857','orderby','st.resource_publication_date'},1,6)}">
+				<ul>
+					<li th:each="item : ${infoList.records}">
+													<span th:text="${#dates.format(item.resourcePublicationDate,'yyyy-MM-dd')}">
+													[[${#dates.format(item.resourcePublicationDate,'yyyy-MM-dd')}]]
+													</span>
+						<a target="_blank" th:href="${item.url}" th:text="${item.title}">[[${item.title}]]</a>
+					</li>
+				</ul>
+			<a href="/zcfg/sxswzfwj/list.html" class="u-more"></a>
 		</div>
 		<div id="con_two_3" style="display: none;">
-			<ul>
-				<li>
-					<span>2020-04-10</span>
-					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-				</li>
-				<li>
-					<span>2020-04-10</span>
-					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-				</li>
-				<li>
-					<span>2020-04-10</span>
-					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-				</li>
-				<li>
-					<span>2020-04-10</span>
-					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-				</li>
-			</ul>
-			<a href="#3" class="u-more"></a>
+			<th:block th:with="infoList = ${#InfoData.getInfoList(#{'siteId':site.id,'catId':'1260448477100380162','orderby','st.resource_publication_date'},1,6)}">
+				<ul>
+					<li th:each="item : ${infoList.records}">
+													<span th:text="${#dates.format(item.resourcePublicationDate,'yyyy-MM-dd')}">
+													[[${#dates.format(item.resourcePublicationDate,'yyyy-MM-dd')}]]
+													</span>
+						<a target="_blank" th:href="${item.url}" th:text="${item.title}">[[${item.title}]]</a>
+					</li>
+				</ul>
+			<a href="/zcfg/wnswszfwj/list.html" class="u-more"></a>
 		</div>
 		<div id="con_two_4" style="display: none;">
-			<ul>
-				<li>
-					<span>2020-04-10</span>
-					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-				</li>
-				<li>
-					<span>2020-04-10</span>
-					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-				</li>
-				<li>
-					<span>2020-04-10</span>
-					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-				</li>
-			</ul>
-			<a href="#4" class="u-more"></a>
+			<th:block th:with="infoList = ${#InfoData.getInfoList(#{'siteId':site.id,'catId':'1260448572277526530','orderby','st.resource_publication_date'},1,6)}">
+				<ul>
+					<li th:each="item : ${infoList.records}">
+													<span th:text="${#dates.format(item.resourcePublicationDate,'yyyy-MM-dd')}">
+													[[${#dates.format(item.resourcePublicationDate,'yyyy-MM-dd')}]]
+													</span>
+						<a target="_blank" th:href="${item.url}" th:text="${item.title}">[[${item.title}]]</a>
+					</li>
+				</ul>
+			<a href="/zcfg/tpgjhybmwj/list.html" class="u-more"></a>
 		</div>
 	</div>
 </div>
@@ -259,69 +227,47 @@
 <div class="g-lt-md">
 	<ul>
 		<li class="zcjd">
-			<a href="#">政策解读</a>
+			<a href="/zcfg/zcjd/list.html">政策解读</a>
 		</li>
 		<li class="tsbf">
-			<a href="#">图说帮扶</a>
+			<a href="/zcfg/tsbf/list.html">图说帮扶</a>
 		</li>
 		<li class="gzyd">
-			<a href="#">工作导引</a>
+			<a href="/zcfg/gzdy/list.html">工作导引</a>
 		</li>
 	</ul>
 </div>
 <div class="blank30"></div>
 <div class="g-lt-bottom">
 	<div class="m-tnm">
-		<a href="#" class="hover" id="three1" onmousemove="setTab('three',1,2)">理论研究</a>
-		<a href="#" id="three2" onmousemove="setTab('three',2,2)">扶贫典型</a>
+		<a href="/tcyj/llyj/list.html" class="hover" id="three1" onmousemove="setTab('three',1,2)">理论研究</a>
+		<a href="/tcyj/fpdx/list.html" id="three2" onmousemove="setTab('three',2,2)">扶贫典型</a>
 	</div>
 	<div class="m-list">
 		<div class="blank15"></div>
 		<div id="con_three_1" style="display: block;">
-			<ul>
-				<li>
-					<span>2020-04-10</span>
-					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-				</li>
-				<li>
-					<span>2020-04-10</span>
-					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-				</li>
-				<li>
-					<span>2020-04-10</span>
-					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-				</li>
-				<li>
-					<span>2020-04-10</span>
-					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-				</li>
-				<li>
-					<span>2020-04-10</span>
-					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-				</li>
-				<li>
-					<span>2020-04-10</span>
-					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-				</li>
-				<li>
-					<span>2020-04-10</span>
-					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-				</li>
-			</ul>
-			<a href="#1" class="u-more"></a>
+			<th:block th:with="infoList = ${#InfoData.getInfoList(#{'siteId':site.id,'catId':'1260448838422892546','orderby','st.resource_publication_date'},1,7)}">
+				<ul>
+					<li th:each="item : ${infoList.records}">
+													<span th:text="${#dates.format(item.resourcePublicationDate,'yyyy-MM-dd')}">
+													[[${#dates.format(item.resourcePublicationDate,'yyyy-MM-dd')}]]
+													</span>
+						<a target="_blank" th:href="${item.url}" th:text="${item.title}">[[${item.title}]]</a>
+					</li>
+				</ul>
+			<a href="/tcyj/llyj/list.html" class="u-more"></a>
 		</div>
 		<div id="con_three_2" style="display: none;">
-			<ul>
-				<li>
-					<span>2020-04-10</span>
-					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-				</li>
-				<li>
-					<span>2020-04-10</span>
-					<a href="#">文引学：强化决战决胜意识 奋力夺取脱贫攻坚战全面胜利</a>
-				</li>
-			</ul>
-			<a href="#2" class="u-more"></a>
+			<th:block th:with="infoList = ${#InfoData.getInfoList(#{'siteId':site.id,'catId':'1260449219349581825','orderby','st.resource_publication_date'},1,7)}">
+				<ul>
+					<li th:each="item : ${infoList.records}">
+													<span th:text="${#dates.format(item.resourcePublicationDate,'yyyy-MM-dd')}">
+													[[${#dates.format(item.resourcePublicationDate,'yyyy-MM-dd')}]]
+													</span>
+						<a target="_blank" th:href="${item.url}" th:text="${item.title}">[[${item.title}]]</a>
+					</li>
+				</ul>
+			<a href="/tcyj/fpdx/list.html" class="u-more"></a>
 		</div>
 	</div>
 </div>
@@ -341,13 +287,13 @@
 		<div class="m-xxml">
 			<ul>
 				<li>
-					<a href="#">信息公开目录</a>
+					<a href="/zwgk/xxgkml/list.html">信息公开目录</a>
 				</li>
 				<li>
-					<a href="#">信息公开指南</a>
+					<a href="/zwgk/xxgknb/list.html">信息公开指南</a>
 				</li>
 				<li>
-					<a href="#">信息公开年报</a>
+					<a href="/zwgk/xxgknb/list.html">信息公开年报</a>
 				</li>
 				<li>
 					<a href="#">信息公开制度</a>
@@ -370,48 +316,25 @@
 <!-- 扶贫视频 -->
 <div class="g-fpsp">
 	<div class="m-tnm">
-		<a href="#" class="hover">扶贫视频</a>
+		<a href="/fpsp/list.html" class="hover">扶贫视频</a>
 	</div>
 	<div class="blank30"></div>
 	<div class="m-fpsp">
-		<a href="#1" class="u-more"></a>
+		<a href="/fpsp/list.html" class="u-more"></a>
+		<th:block th:with="infoList = ${#InfoData.getInfoList(#{'siteId':site.id,'catId':'1260794716878802945','isThumb':'true'},1,5)}">
 		<div class="swiper-container m-focus" id="swiper3">
 			<div class="swiper-wrapper">
-				<div class="swiper-slide">
-					<a href="#">
-						<img src="images/index.files/fpsp.png">
+				<div class="swiper-slide" th:each="item : ${infoList.records}">
+					<a th:href="${item.url}">
+						<img th:src="${item.thumbnail}" alt="">
 					</a>
 					<div class="shadow">
-						<a href="#">扶贫路上的初心</a>
+						<a th:href="${item.url}" th:text="${item.title}">[[${item.title}]]</a>
 					</div>
 				</div>
-				<div class="swiper-slide">
-					<a href="#">
-						<img src="images/index.files/fpsp.png">
-					</a>
-					<div class="shadow">
-						<a href="#">扶贫路上的初心</a>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<a href="#">
-						<img src="images/index.files/fpsp.png">
-					</a>
-					<div class="shadow">
-						<a href="#">扶贫路上的初心</a>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<a href="#">
-						<img src="images/index.files/fpsp.png">
-					</a>
-					<div class="shadow">
-						<a href="#">扶贫路上的初心</a>
-					</div>
-				</div>
-
 			</div>
 		</div>
+		</th:block>
 		<div class="swiper-pagination fy3"></div> <!--分页器。如果放置在swiper-container外面，需要自定义样式。-->
 	</div>
 </div>
